@@ -1,5 +1,7 @@
 # CV. Putra AR - Food Manufacturing & B2B Wholesale Platform
 
+![CV. Putra AR Platform Preview](public/img/preview-banner.webp)
+
 Platform web resmi dan portal distribusi kemitraan grosir B2B untuk **CV. Putra AR**, perusahaan manufaktur pangan terkemuka yang berpusat di Sukahurip, Kabupaten Ciamis, Jawa Barat. Berdiri sejak tahun 2017, perusahaan memproduksi olahan bakso kemasan beku *Raja Raoz*, otak-otak ikan tenggiri, kwetiau basah higienis, dan aneka camilan gurih dengan standar mesin modern Jepang serta rantai dingin terpadu ke seluruh Pulau Jawa.
 
 ---
