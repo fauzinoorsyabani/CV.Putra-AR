@@ -462,16 +462,25 @@ img {
 }
 
 .film-main-headline {
-  font-size: 3.5rem;
+  font-size: clamp(1.25rem, 3.2vw, 2.35rem);
   font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: #ffffff;
-  max-width: 940px;
-  margin: 0 auto 24px;
-  min-height: 2.4em;
-  display: block;
-  text-align: center;
+  max-width: 100%;
+  margin: 0 auto 20px;
+  min-height: 1.35em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.film-main-headline span,
+.film-main-headline em {
+  white-space: nowrap;
 }
 
 .film-main-headline em {
@@ -593,7 +602,7 @@ img {
 
 @media (max-width: 900px) {
   .film-main-headline {
-    font-size: 2.7rem;
+    font-size: clamp(1.05rem, 3.6vw, 1.75rem);
   }
   .film-lower-third {
     display: none;
@@ -602,7 +611,8 @@ img {
 
 @media (max-width: 600px) {
   .film-main-headline {
-    font-size: 2.1rem;
+    font-size: clamp(0.85rem, 4.3vw, 1.25rem);
+    letter-spacing: -0.01em;
   }
 }
 
