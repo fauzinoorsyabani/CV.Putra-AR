@@ -1,4 +1,4 @@
-// CV. Putra AR - Interactive Script & Animation Controller
+// CV. Putra AR - Main Client Script & Directional Scroll Animations
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Feather Icons Initialization
@@ -6,25 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
         feather.replace();
     }
 
-    // 2. Navbar Elements & State
+    // 2. Navbar Elements & Scroll Effects
     const navbar = document.querySelector('.navbar');
     const hamburgerBtn = document.querySelector('#hamburger-menu');
     const navbarNav = document.querySelector('.navbar-nav');
     const searchBtn = document.querySelector('#search-button');
     const searchForm = document.querySelector('.search-form');
     const searchBox = document.querySelector('#search-box');
-    const cartBtn = document.querySelector('#shopping-cart-button');
     const scrollProgressBar = document.querySelector('.scroll-progress-bar');
+    const backToTopBtn = document.querySelector('#back-to-top');
 
-    // Scroll Navbar Effect & Progress Bar
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
-        if (scrolled > 50) {
+
+        // Navbar scrolled state
+        if (scrolled > 40) {
             navbar.classList.add('navbar-scrolled');
         } else {
             navbar.classList.remove('navbar-scrolled');
         }
 
+        // Top progress bar
         if (scrollProgressBar) {
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
@@ -32,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Back to top visibility
-        const backToTopBtn = document.querySelector('#back-to-top');
         if (backToTopBtn) {
             if (scrolled > 400) {
                 backToTopBtn.classList.add('visible');
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Hamburger Menu Toggle
+    // Mobile Hamburger Menu
     if (hamburgerBtn && navbarNav) {
         hamburgerBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Search Toggle
+    // Quick Search Form
     if (searchBtn && searchForm) {
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -75,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close mobile nav on link click
     if (navbarNav) {
         navbarNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -84,18 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Search Box live search triggering
+    // Search Box live sync with catalog
     if (searchBox) {
         searchBox.addEventListener('input', (e) => {
             const query = e.target.value.trim();
-            // Scroll to product section if user is typing
             if (query.length >= 2) {
                 const productSection = document.querySelector('#products');
                 if (productSection && window.scrollY < productSection.offsetTop - 300) {
                     productSection.scrollIntoView({ behavior: 'smooth' });
                 }
             }
-            // Sync with Alpine data if active
             const productElem = document.querySelector('[x-data="products"]');
             if (productElem && Alpine && Alpine.$data(productElem)) {
                 Alpine.$data(productElem).searchQuery = query;
@@ -103,148 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Interactive Gate Entrance Simulation
-    const gateEntranceContainer = document.querySelector('.gate-entrance-container');
-    const openGateBtn = document.querySelector('#open-gate-trigger');
-    const gateVideoPreview = document.querySelector('#gate-video-preview');
-    const gateStatusPill = document.querySelector('#gate-status-pill');
-
-    if (openGateBtn && gateEntranceContainer) {
-        openGateBtn.addEventListener('click', () => {
-            const isOpened = gateEntranceContainer.classList.toggle('gate-opened');
-            if (isOpened) {
-                openGateBtn.innerHTML = '<i data-feather="lock"></i> Tutup Gerbang Masuk';
-                if (gateStatusPill) {
-                    gateStatusPill.textContent = 'Akses Terbuka: Memasuki Area Fasilitas Produksi';
-                    gateStatusPill.classList.add('status-open');
-                }
-                if (gateVideoPreview) {
-                    gateVideoPreview.play().catch(() => {});
-                }
-            } else {
-                openGateBtn.innerHTML = '<i data-feather="unlock"></i> Buka Gerbang Masuk Perusahaan';
-                if (gateStatusPill) {
-                    gateStatusPill.textContent = 'Pintu Gerbang Utama: Keamanan & Sterilisasi Terpadu';
-                    gateStatusPill.classList.remove('status-open');
-                }
-            }
-            if (window.feather) feather.replace();
-        });
-    }
-
-    // 4. Virtual Tour Video Modal System
-    const tourModal = document.querySelector('#tour-modal');
-    const tourOpenBtns = document.querySelectorAll('.open-tour-trigger');
-    const tourCloseBtn = document.querySelector('#tour-close-btn');
-    const tourVideo = document.querySelector('#tour-main-video');
-    const tourPlayPauseBtn = document.querySelector('#tour-play-pause');
-    const tourMuteBtn = document.querySelector('#tour-mute');
-    const tourChapters = document.querySelectorAll('.tour-chapter-item');
-
-    const openTour = (chapterTime = 0) => {
-        if (!tourModal) return;
-        tourModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        if (tourVideo) {
-            tourVideo.currentTime = chapterTime;
-            tourVideo.play().catch(() => {});
-            updatePlayPauseIcon(true);
-        }
-    };
-
-    const closeTour = () => {
-        if (!tourModal) return;
-        tourModal.classList.remove('active');
-        document.body.style.overflow = '';
-        if (tourVideo) {
-            tourVideo.pause();
-            updatePlayPauseIcon(false);
-        }
-    };
-
-    const updatePlayPauseIcon = (isPlaying) => {
-        if (!tourPlayPauseBtn) return;
-        if (isPlaying) {
-            tourPlayPauseBtn.innerHTML = '<i data-feather="pause"></i>';
-        } else {
-            tourPlayPauseBtn.innerHTML = '<i data-feather="play"></i>';
-        }
-        if (window.feather) feather.replace();
-    };
-
-    tourOpenBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const time = parseFloat(btn.getAttribute('data-time') || '0');
-            openTour(time);
-        });
-    });
-
-    if (tourCloseBtn) {
-        tourCloseBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeTour();
-        });
-    }
-
-    if (tourModal) {
-        tourModal.addEventListener('click', (e) => {
-            if (e.target === tourModal) {
-                closeTour();
-            }
-        });
-    }
-
-    // Escape key closes modals
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeTour();
-            const itemModal = document.querySelector('#item-detail-modal');
-            if (itemModal) itemModal.style.display = 'none';
-        }
-    });
-
-    if (tourPlayPauseBtn && tourVideo) {
-        tourPlayPauseBtn.addEventListener('click', () => {
-            if (tourVideo.paused) {
-                tourVideo.play().catch(() => {});
-                updatePlayPauseIcon(true);
-            } else {
-                tourVideo.pause();
-                updatePlayPauseIcon(false);
-            }
-        });
-    }
-
-    if (tourMuteBtn && tourVideo) {
-        tourMuteBtn.addEventListener('click', () => {
-            tourVideo.muted = !tourVideo.muted;
-            if (tourVideo.muted) {
-                tourMuteBtn.innerHTML = '<i data-feather="volume-x"></i>';
-            } else {
-                tourMuteBtn.innerHTML = '<i data-feather="volume-2"></i>';
-            }
-            if (window.feather) feather.replace();
-        });
-    }
-
-    // Chapter Navigation
-    tourChapters.forEach(chapter => {
-        chapter.addEventListener('click', () => {
-            const time = parseFloat(chapter.getAttribute('data-chapter-time') || '0');
-            if (tourVideo) {
-                tourVideo.currentTime = time;
-                tourVideo.play().catch(() => {});
-                updatePlayPauseIcon(true);
-            }
-            tourChapters.forEach(c => c.classList.remove('active'));
-            chapter.classList.add('active');
-        });
-    });
-
-    // 5. Scroll Reveal Animations & Number Counters
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    const counterElements = document.querySelectorAll('.counter-number');
+    // 3. Directional Scroll Animations (Left, Right, Up, Stagger)
+    const directionalElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up, .reveal-scale');
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -254,13 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    directionalElements.forEach(el => revealObserver.observe(el));
 
-    // Animated number counter
+    // 4. Animated Number Counters
+    const counterElements = document.querySelectorAll('.counter-number');
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -274,8 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const step = (timestamp) => {
                     if (!startTimestamp) startTimestamp = timestamp;
                     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    // easeOutQuart
-                    const easeProgress = 1 - Math.pow(1 - progress, 4);
+                    const easeProgress = 1 - Math.pow(1 - progress, 4); // easeOutQuart
                     const currentVal = Math.floor(easeProgress * endVal);
                     target.textContent = `${prefix}${currentVal.toLocaleString('id-ID')}${suffix}`;
                     if (progress < 1) {
@@ -289,11 +147,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(target);
             }
         });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.35 });
 
     counterElements.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Interactive 3D Card Hover / Tilt Effect
+    // 5. Interactive 3D Card Hover / Subtle Perspective Tilt
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -302,8 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
         });
@@ -313,8 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. Back To Top
-    const backToTopBtn = document.querySelector('#back-to-top');
+    // 6. Back To Top Button
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -325,13 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Contact Form feedback
+    // 7. Contact Form Handler
     const contactForm = document.querySelector('.contact-form-inner');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = contactForm.querySelector('input[type="text"]').value;
-            showToast(`Terima kasih, ${name || 'Bapak/Ibu'}. Pesan Anda telah terkirim ke customer care kami.`);
+            const nameInput = contactForm.querySelector('#c-name');
+            const name = nameInput ? nameInput.value : 'Bapak/Ibu';
+            showToast(`Terima kasih, ${name}. Pesan Anda telah kami terima.`);
             contactForm.reset();
         });
     }

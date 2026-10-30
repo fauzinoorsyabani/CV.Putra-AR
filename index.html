@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV. PUTRA AR - Food Manufacturing &amp; Supply</title>
-    <meta name="description" content="CV. Putra AR - Perusahaan manufaktur dan pemasok makanan olahan terpercaya di Indonesia. Memproduksi aneka bakso, otak-otak, kwetiau, dan camilan berkualitas berstandar mesin modern Jepang." />
+    <title>CV. PUTRA AR - Food Manufacturing Supply</title>
+    <meta name="description" content="CV. Putra AR - Perusahaan manufaktur dan pemasok makanan olahan terpercaya di Indonesia. Memproduksi aneka bakso Raja Raoz, otak-otak, kwetiau, dan aneka camilan berkualitas berstandar mesin modern Jepang." />
 
     <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Custom Stylesheet -->
+    <!-- Custom Stylesheet (Bright & Warm Luxury Corporate Style) -->
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- Alpine.js Core & Application Store -->
@@ -27,8 +27,32 @@
   </head>
 
   <body x-data>
-    <!-- Scroll Progression Top Bar -->
+    <!-- Top Scroll Progress Bar -->
     <div class="scroll-progress-bar"></div>
+
+    <!-- Top Corporate Notice Bar -->
+    <div class="top-notice-bar">
+      <div class="top-notice-left">
+        <div class="top-notice-item">
+          <i data-feather="map-pin"></i>
+          <span>Pabrik: Sukahurip, Kabupaten Ciamis, Jawa Barat 46262</span>
+        </div>
+        <div class="top-notice-item">
+          <i data-feather="clock"></i>
+          <span>Senin - Sabtu: 08.00 - 17.00 WIB</span>
+        </div>
+      </div>
+      <div class="top-notice-right">
+        <div class="top-notice-item">
+          <i data-feather="phone"></i>
+          <span>(0265) 5401232</span>
+        </div>
+        <div class="top-notice-item" style="margin-left: 12px;">
+          <i data-feather="message-circle"></i>
+          <span>WA: +62 813-1064-1534</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ==========================================================================
          Navbar
@@ -37,17 +61,21 @@
       <a href="#home" class="navbar-brand">
         <picture>
           <source srcset="img/imgcvputra/logoatas.webp" type="image/webp" />
-          <img src="img/imgcvputra/logoatas.webp" alt="CV. Putra AR Logo" class="brand-logo" width="44" height="44" />
+          <img src="img/imgcvputra/logoatas.webp" alt="CV. Putra AR Logo" class="brand-logo" width="48" height="48" />
         </picture>
-        <span class="brand-name">CV. PUTRA <em>AR</em></span>
+        <div class="brand-text-block">
+          <span class="brand-name">CV. PUTRA AR</span>
+          <span class="brand-tagline">Food Manufacturing Supply</span>
+        </div>
       </a>
 
       <div class="navbar-nav">
         <a href="#home">Beranda</a>
-        <a href="#entrance">Tur Fasilitas</a>
-        <a href="#about">Tentang Kami</a>
-        <a href="#featured">Unggulan</a>
+        <a href="#profile">Profil</a>
+        <a href="#gallery">Galeri Produk</a>
+        <a href="#standards">Standar Mutu</a>
         <a href="#products">Katalog Menu</a>
+        <a href="#partnership">Kemitraan</a>
         <a href="#contact">Kontak</a>
       </div>
 
@@ -60,8 +88,8 @@
           type="button" 
           class="action-btn" 
           id="shopping-cart-button" 
-          title="Keranjang Belanja" 
-          aria-label="Keranjang Belanja"
+          title="Keranjang Pesanan" 
+          aria-label="Keranjang Pesanan"
           @click="$store.cart.toggle()"
         >
           <i data-feather="shopping-cart"></i>
@@ -73,15 +101,19 @@
           ></span>
         </button>
 
+        <a href="#partnership" class="btn-nav-cta">
+          <i data-feather="briefcase"></i> Kemitraan Grosir
+        </a>
+
         <button type="button" class="action-btn" id="hamburger-menu" title="Menu Navigasi" aria-label="Menu">
           <i data-feather="menu"></i>
         </button>
       </div>
 
-      <!-- Quick Search Dropdown Form -->
+      <!-- Quick Search Dropdown -->
       <div class="search-form">
         <i data-feather="search"></i>
-        <input type="search" id="search-box" placeholder="Ketik nama produk yang dicari..." autocomplete="off" />
+        <input type="search" id="search-box" placeholder="Cari produk olahan, bakso, atau camilan..." autocomplete="off" />
       </div>
     </nav>
 
@@ -98,7 +130,7 @@
       <div class="cart-header">
         <h3>
           <i data-feather="shopping-bag"></i> 
-          Keranjang Belanja (<span x-text="$store.cart.quantity"></span>)
+          Daftar Pesanan (<span x-text="$store.cart.quantity"></span>)
         </h3>
         <button type="button" class="cart-close-btn" @click="$store.cart.close()" title="Tutup Keranjang">
           <i data-feather="x"></i>
@@ -116,7 +148,7 @@
                 <button type="button" class="cart-qty-btn" @click="$store.cart.remove(item.id)">&minus;</button>
                 <span class="cart-qty-number" x-text="item.quantity"></span>
                 <button type="button" class="cart-qty-btn" @click="$store.cart.add(item)">&plus;</button>
-                <span style="font-size: 0.8rem; color: var(--color-text-dim); margin-left: 6px;" x-text="`= ${rupiah(item.total)}`"></span>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted); margin-left: 6px;" x-text="`= ${rupiah(item.total)}`"></span>
               </div>
             </div>
           </div>
@@ -124,8 +156,8 @@
 
         <div x-show="!$store.cart.items.length" class="cart-empty-state">
           <i data-feather="shopping-cart"></i>
-          <h4>Keranjang Anda Kosong</h4>
-          <p style="font-size: 0.85rem; margin-top: 6px;">Silakan pilih produk favorit dari katalog untuk memulai pemesanan.</p>
+          <h4>Keranjang Pesanan Masih Kosong</h4>
+          <p style="font-size: 0.85rem; margin-top: 6px;">Pilih varian produk dari katalog untuk memulai pemesanan.</p>
         </div>
       </div>
 
@@ -137,8 +169,8 @@
 
         <form id="checkoutForm" class="checkout-form-container">
           <div class="checkout-input-group">
-            <label for="name">Nama Lengkap</label>
-            <input type="text" name="name" id="name" placeholder="Nama Anda atau Toko" required />
+            <label for="name">Nama Pemesan / Badan Usaha</label>
+            <input type="text" name="name" id="name" placeholder="Nama Anda atau Usaha" required />
           </div>
 
           <div class="checkout-input-group">
@@ -147,359 +179,320 @@
           </div>
 
           <div class="checkout-input-group">
-            <label for="address">Alamat Pengiriman / Kota</label>
+            <label for="address">Alamat Pengiriman &amp; Kota Tujuan</label>
             <textarea name="address" id="address" rows="2" placeholder="Alamat lengkap tujuan pengiriman" required></textarea>
           </div>
 
           <div class="checkout-input-group">
-            <label for="notes">Catatan Tambahan (Opsional)</label>
-            <input type="text" name="notes" id="notes" placeholder="Catatan khusus pesanan" />
+            <label for="notes">Catatan Khusus (Opsional)</label>
+            <input type="text" name="notes" id="notes" placeholder="Catatan jadwal atau instruksi kirim" />
           </div>
 
           <button type="submit" class="btn-checkout disabled" id="checkout-button" disabled>
-            <i data-feather="send"></i> Kirim Pesanan via WhatsApp
+            <i data-feather="send"></i> Kirim Pesanan Resmi via WhatsApp
           </button>
         </form>
       </div>
     </aside>
 
     <!-- ==========================================================================
-         Hero Section with Video Entrance Experience
+         Hero Section (Bright, Elegant & Corporate)
          ========================================================================== -->
-    <header class="hero" id="home">
-      <div class="hero-video-wrapper">
-        <video 
-          autoplay 
-          loop 
-          muted 
-          playsinline 
-          poster="img/imgcvputra/mainpage.webp" 
-          class="hero-video-bg"
-        >
-          <source src="video/factory-tour.webm" type="video/webm" />
-        </video>
-        <div class="hero-overlay"></div>
-      </div>
+    <header class="hero-corporate" id="home">
+      <div class="hero-inner-container">
+        <span class="hero-pre-badge reveal-up">
+          Perusahaan Manufaktur Pangan Resmi • Berdiri Sejak 2017
+        </span>
 
-      <div class="hero-content reveal-on-scroll">
-        <div class="hero-status-pill">
-          <span class="pulse-dot"></span>
-          <span>Operasional Manufaktur Aktif • Mesin Modern Berstandar Jepang</span>
-        </div>
-
-        <h1 class="hero-title">
-          Produsen Makanan Olahan Berkualitas &amp; 
-          <span class="title-italic">Pemasok Terpercaya</span> Se-Pulau Jawa
+        <h1 class="hero-main-title reveal-up delay-1">
+          Dedikasi Cita Rasa Otentik, Diproduksi dengan Standar <em class="italic">Manufaktur Modern</em>
         </h1>
 
-        <p class="hero-description">
-          CV. Putra AR menghadirkan produk olahan bakso kemasan beku bermerk <em>Raja Raoz</em>, otak-otak, kwetiau, dan ragam camilan nusantara bermutu tinggi dengan higienitas terjamin langsung dari pabrik modern kami di Ciamis.
+        <p class="hero-lead-text reveal-up delay-2">
+          CV. Putra AR adalah produsen dan pemasok pangan terkemuka yang berpusat di Ciamis, Jawa Barat. Menghadirkan ragam olahan bakso kemasan beku <em>Raja Raoz</em>, otak-otak ikan, kwetiau, dan aneka camilan bermutu tinggi untuk kemitraan grosir, agen, dan konsumsi keluarga di seluruh Pulau Jawa.
         </p>
 
-        <div class="hero-actions">
-          <button type="button" class="btn-primary open-tour-trigger" data-time="0">
-            <i data-feather="play-circle"></i> Masuk Tur Perusahaan (Video Entrance)
-          </button>
-          <a href="#products" class="btn-secondary">
-            <i data-feather="shopping-bag"></i> Jelajahi Produk Kami
+        <div class="hero-cta-group reveal-up delay-3">
+          <a href="#products" class="btn-solid-primary">
+            <i data-feather="shopping-bag"></i> Lihat Katalog Produk
+          </a>
+          <a href="#partnership" class="btn-solid-secondary">
+            <i data-feather="users"></i> Kemitraan &amp; Pasokan Grosir
           </a>
         </div>
 
-        <!-- Key Enterprise Statistics Bar -->
-        <div class="hero-stats-grid reveal-on-scroll delay-2">
-          <div class="stat-item">
-            <div class="stat-number counter-number" data-count="500" data-suffix=" Juta / Hari">0</div>
-            <div class="stat-label">Kapasitas Produksi Harian</div>
+        <!-- Hero Triple Showcase (Inspired by Reference Banner Layout) -->
+        <div class="hero-trio-showcase reveal-up delay-4">
+          <div class="hero-trio-item tilt-card">
+            <div class="hero-trio-img">
+              <picture>
+                <source srcset="img/menu/otakotak.webp" type="image/webp" />
+                <img src="img/menu/otakotak.webp" alt="Otak-Otak Ikan Raja Raoz" loading="lazy" />
+              </picture>
+            </div>
+            <div class="hero-trio-caption">
+              <h4>Otak-Otak Ikan Tenggiri</h4>
+              <p>Olahan ikan segar dengan rempah pilihan khas Jawa Barat</p>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number counter-number" data-count="309" data-suffix=" Karyawan">0</div>
-            <div class="stat-label">Tenaga Kerja Profesional</div>
+
+          <div class="hero-trio-item tilt-card">
+            <div class="hero-trio-img">
+              <picture>
+                <source srcset="img/menu/baso.webp" type="image/webp" />
+                <img src="img/menu/baso.webp" alt="Bakso Sapi Super Raja Raoz" loading="lazy" />
+              </picture>
+            </div>
+            <div class="hero-trio-caption">
+              <h4>Bakso Sapi Super Raja Raoz</h4>
+              <p>Daging sapi asli resep legendaris berstandar higienis tinggi</p>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number counter-number" data-count="100" data-suffix="+ Mitra">0</div>
-            <div class="stat-label">Jaringan Distribusi Se-Jawa</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number counter-number" data-count="100" data-suffix="% Halal">0</div>
-            <div class="stat-label">Jaminan Mutu &amp; Sertifikasi</div>
+
+          <div class="hero-trio-item tilt-card">
+            <div class="hero-trio-img">
+              <picture>
+                <source srcset="img/menu/basreng.webp" type="image/webp" />
+                <img src="img/menu/basreng.webp" alt="Basreng Pedas Daun Jeruk" loading="lazy" />
+              </picture>
+            </div>
+            <div class="hero-trio-caption">
+              <h4>Basreng Pedas Daun Jeruk</h4>
+              <p>Camilan baso goreng renyah dengan cabai asli &amp; jeruk purut</p>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
     <!-- ==========================================================================
-         Interactive Entrance & Virtual Factory Tour Section
+         Section: Company Profile & Core Milestones
+         (Inspired by reference: "Serving Customers For Over A Decade")
          ========================================================================== -->
-    <section class="section section-darker" id="entrance">
-      <div class="section-header reveal-on-scroll">
-        <span class="section-badge">Gerbang Masuk Fasilitas</span>
-        <h2 class="section-title">
-          Eksplorasi Gerbang Masuk &amp; <em>Fasilitas Modern CV Putra AR</em>
-        </h2>
-        <p class="section-subtitle">
-          Saksikan langsung bagaimana dedikasi sanitasi, teknologi otomasi Jepang, dan standar keamanan pangan kelas industri bekerja setiap hari di Sukahurip, Kabupaten Ciamis.
-        </p>
-      </div>
+    <section class="section-profile" id="profile">
+      <div class="profile-container">
+        <!-- Left Column: Content sliding from left -->
+        <div class="profile-content reveal-left">
+          <span class="profile-eyebrow">Profil &amp; Sejarah Perusahaan</span>
+          <h2 class="profile-heading">
+            Melayani Kebutuhan Pangan Nusantara <em class="italic">Sejak Tahun 2017</em>
+          </h2>
 
-      <!-- Interactive Gate Showcase -->
-      <div class="gate-entrance-showcase reveal-on-scroll delay-1">
-        <div class="gate-showcase-header">
-          <div class="gate-header-left">
-            <span class="pulse-dot"></span>
-            <span class="gate-status-pill" id="gate-status-pill">
-              Pintu Gerbang Utama: Keamanan &amp; Sterilisasi Terpadu
-            </span>
-          </div>
+          <p class="profile-body-text">
+            CV. Putra AR merupakan perusahaan yang bergerak di bidang industri kuliner dan manufaktur makanan olahan. Bermula dari sebuah perusahaan dagang (PD), pesatnya permintaan pasar dan komitmen terhadap kemajuan mendorong perusahaan bertransformasi resmi menjadi CV pada tahun 2017, dan saat ini sedang dalam proses pengajuan status menjadi Perseroan Terbatas (PT).
+          </p>
 
-          <button type="button" class="btn-secondary" id="open-gate-trigger">
-            <i data-feather="unlock"></i> Buka Gerbang Masuk Perusahaan
-          </button>
-        </div>
+          <p class="profile-body-text">
+            Fasilitas produksi kami memusatkan fokus pada produksi bakso kemasan beku bermerk <em>Raja Raoz</em>, otak-otak ikan, dan aneka camilan olahan. Seluruh proses pembuatan dikelola secara higienis menggunakan mesin-mesin industri modern yang diimpor langsung dari Jepang guna memastikan kualitas rasa, tekstur, dan kepatuhan standar keamanan pangan nasional.
+          </p>
 
-        <!-- Gate 3D Door Simulation Container -->
-        <div class="gate-entrance-container">
-          <!-- Interior Live Factory Video View -->
-          <div class="gate-interior-preview">
-            <video 
-              id="gate-video-preview" 
-              loop 
-              muted 
-              playsinline 
-              poster="img/imgcvputra/mainpage.webp"
-            >
-              <source src="video/factory-tour.webm" type="video/webm" />
-            </video>
-            <div class="gate-interior-overlay">
-              <h3>Fasilitas Produksi Berstandar Internasional</h3>
-              <p>Area steril pemrosesan bakso dan makanan beku menggunakan otomasi mesin modern Jepang.</p>
-              <button type="button" class="btn-primary open-tour-trigger" data-time="0">
-                <i data-feather="maximize-2"></i> Buka Tur Virtual Layar Penuh
-              </button>
+          <!-- Core Numbers Row -->
+          <div class="profile-stats-row">
+            <div class="profile-stat-box">
+              <h3 class="counter-number" data-count="309" data-suffix="+">0</h3>
+              <p>Tenaga Kerja Terlatih</p>
             </div>
-          </div>
-
-          <!-- Left Sliding Industrial Security Door -->
-          <div class="sliding-gate-door door-left">
-            <div class="door-warning-stripes"></div>
-            <div class="door-seal-badge">
-              <span>GERBANG MASUK A - AREA STERIL</span>
+            <div class="profile-stat-box">
+              <h3 class="counter-number" data-count="500" data-suffix=" Jt">0</h3>
+              <p>Kapasitas Harian (Unit)</p>
             </div>
-          </div>
-
-          <!-- Right Sliding Industrial Security Door -->
-          <div class="sliding-gate-door door-right">
-            <div class="door-warning-stripes"></div>
-            <div class="door-seal-badge">
-              <span>CV. PUTRA AR - CIAMIS</span>
+            <div class="profile-stat-box">
+              <h3 class="counter-number" data-count="100" data-suffix="+">0</h3>
+              <p>Jaringan Mitra Se-Jawa</p>
             </div>
           </div>
         </div>
 
-        <!-- 4 Milestone Stages of Company Entrance -->
-        <div class="tour-milestones-grid">
-          <div class="milestone-card open-tour-trigger" data-time="0">
-            <div class="milestone-step">TAHAP 01</div>
-            <h4 class="milestone-title">Gerbang &amp; Pos Sanitasi APD</h4>
-            <p class="milestone-desc">Sterilisasi seluruh personil melalui air shower dan pakaian pelindung higienis sebelum memasuki zona manufaktur.</p>
-          </div>
-
-          <div class="milestone-card open-tour-trigger" data-time="20">
-            <div class="milestone-step">TAHAP 02</div>
-            <h4 class="milestone-title">Lini Mesin Otomatis Jepang</h4>
-            <p class="milestone-desc">Otomasi pencetakan dan pematangan bakso berkecepatan tinggi dengan presisi takaran resep Raja Raoz.</p>
-          </div>
-
-          <div class="milestone-card open-tour-trigger" data-time="50">
-            <div class="milestone-step">TAHAP 03</div>
-            <h4 class="milestone-title">Quality Control &amp; Lab Mutu</h4>
-            <p class="milestone-desc">Pengujian berkala terhadap tekstur, rasa, dan higienitas bebas bahan pengawet kimia berbahaya.</p>
-          </div>
-
-          <div class="milestone-card open-tour-trigger" data-time="80">
-            <div class="milestone-step">TAHAP 04</div>
-            <h4 class="milestone-title">Cold Storage &amp; Distribusi</h4>
-            <p class="milestone-desc">Penyimpanan rantai dingin suhu minus 18 derajat Celcius dan pengiriman armada truk pendingin ke seantero Jawa.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Section: About Us
-         ========================================================================== -->
-    <section class="section" id="about">
-      <div class="about-grid">
-        <div class="about-visual reveal-on-scroll">
-          <div class="about-img-frame tilt-card">
+        <!-- Right Column: Visual sliding from right -->
+        <div class="profile-visual reveal-right">
+          <div class="profile-img-card tilt-card">
             <picture>
               <source srcset="img/tentang-kami-cvputraar.webp" type="image/webp" />
               <img 
                 src="img/tentang-kami-cvputraar.webp" 
-                alt="Fasilitas Pabrik CV. Putra AR" 
+                alt="Fasilitas Pabrik CV. Putra AR Ciamis" 
                 loading="lazy" 
                 width="600" 
-                height="450"
+                height="420"
               />
             </picture>
           </div>
 
-          <div class="about-floating-badge">
-            <div class="badge-icon">
-              <i data-feather="award"></i>
-            </div>
-            <div class="badge-text">
-              <h4>Berdiri Sejak 2017</h4>
-              <p>Tahap Transformasi Menjadi PT</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-content reveal-on-scroll delay-1">
-          <span class="section-badge">Profil Perusahaan</span>
-          <div class="about-tagline">Komitmen Keunggulan Rasa dari Ciamis untuk Seluruh Nusantara</div>
-          <h2>Mengapa Memilih Produk Kuliner <em>CV. Putra AR?</em></h2>
-          <p>
-            CV. Putra AR merupakan perusahaan industri manufaktur pangan yang awalnya dirintis sebagai perusahaan dagang (PD). Seiring dengan pesatnya pertumbuhan pasar dan kepercayaan masyarakat, pada tahun 2017 perusahaan resmi bertransformasi menjadi CV dan saat ini sedang dalam proses peningkatan status menjadi PT.
-          </p>
-          <p>
-            Dengan didukung oleh 309 tenaga kerja terlatih dan mesin-mesin industri modern yang diimpor langsung dari Jepang, kapasitas produksi kami kini mencapai 500 juta unit per hari. Kami memproduksi produk makanan beku legendaris seperti bakso dengan merk <em>Raja Raoz</em>, otak-otak ikan, kwetiau, dan beraneka ragam camilan bermutu tinggi.
-          </p>
-
-          <div class="about-features-list">
-            <div class="about-feature-item">
-              <i data-feather="check-circle" class="check-icon"></i>
-              <span>Bahan Baku Daging &amp; Ikan Segar Terpilih</span>
-            </div>
-            <div class="about-feature-item">
-              <i data-feather="check-circle" class="check-icon"></i>
-              <span>Mesin Modern Presisi Tinggi Impor Jepang</span>
-            </div>
-            <div class="about-feature-item">
-              <i data-feather="check-circle" class="check-icon"></i>
-              <span>Jaminan Higienis &amp; Sertifikasi Halal Resmi</span>
-            </div>
-            <div class="about-feature-item">
-              <i data-feather="check-circle" class="check-icon"></i>
-              <span>Distribusi Rantai Dingin Cepat &amp; Terpercaya</span>
-            </div>
+          <div class="profile-quote-card">
+            <p>"Menjaga konsistensi rasa dan higienitas pangan dengan mesin modern berstandar Jepang untuk kepuasan mitra dan konsumen di seluruh penjuru Pulau Jawa."</p>
+            <span>Manajemen CV. Putra AR - Ciamis</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         Section: Featured Top Products
+         Section: Cuisine & Product Gallery (Warm Sand - Inspired by Reference)
          ========================================================================== -->
-    <section class="section section-darker" id="featured">
-      <div class="section-header reveal-on-scroll">
-        <span class="section-badge">Menu Favorit</span>
-        <h2 class="section-title">
-          Produk Unggulan <em>Rekomendasi Pilihan</em>
-        </h2>
-        <p class="section-subtitle">
-          Varian produk paling digemari masyarakat di seluruh Indonesia, diproses dengan resep otentik berstandar mutu teratas dengan harga yang ramah dan bersaing.
-        </p>
+    <section class="section-cuisine-gallery" id="gallery">
+      <div class="gallery-header-row reveal-up">
+        <div class="gallery-header-left">
+          <span>Koleksi Produk Olahan Pilihan</span>
+          <h2>Galeri Cita Rasa <em>CV. Putra AR</em></h2>
+        </div>
+        <div class="gallery-header-right">
+          <p>
+            Komposisi bahan baku daging sapi dan ikan segar berkualitas dengan formulasi bumbu rempah otentik khas Indonesia yang higienis.
+          </p>
+        </div>
       </div>
 
-      <div class="featured-grid">
-        <!-- Featured Item 1: Otak Otak -->
-        <div class="featured-card tilt-card reveal-on-scroll delay-1">
-          <div class="featured-card-img-wrap">
-            <span class="featured-card-badge">Best Seller</span>
+      <!-- Mosaic Grid (Alternating Left & Right entrance animations) -->
+      <div class="cuisine-mosaic-grid">
+        <!-- Item 1: Otak Otak (reveal from left) -->
+        <div class="cuisine-item-card tilt-card reveal-left delay-1">
+          <div class="cuisine-img-container">
+            <span class="cuisine-tag">Otak-Otak</span>
             <picture>
               <source srcset="img/menu/otakotak.webp" type="image/webp" />
               <img src="img/menu/otakotak.webp" alt="Otak-Otak Ikan Raja Raoz" loading="lazy" />
             </picture>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Otak-Otak Ikan Raja Raoz</h3>
-            <p class="featured-card-desc">Olahan daging ikan tenggiri segar dengan racikan rempah pilihan. Bertekstur kenyal pas dan gurih istimewa.</p>
-            <div class="featured-card-footer">
-              <span class="featured-price">Rp 20.000</span>
+          <div class="cuisine-body">
+            <h3 class="cuisine-title">Otak-Otak Ikan Raja Raoz</h3>
+            <p class="cuisine-desc">Dibuat dari ikan tenggiri segar dengan racikan rempah pilihan. Bertekstur kenyal lembut dan gurih alami.</p>
+            <div class="cuisine-footer">
+              <span class="cuisine-price">Rp 20.000</span>
               <button 
                 type="button" 
-                class="featured-order-btn" 
+                class="btn-cuisine-add"
                 @click="$store.cart.add({ id: 1, name: 'Otak-Otak Ikan Premium', img: '1.webp', price: 20000 })"
               >
-                <i data-feather="plus"></i> Pesan
+                <i data-feather="plus"></i> Beli
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Featured Item 2: Basreng -->
-        <div class="featured-card tilt-card reveal-on-scroll delay-2">
-          <div class="featured-card-img-wrap">
-            <span class="featured-card-badge">Favorit Konsumen</span>
+        <!-- Item 2: Basreng (reveal from right) -->
+        <div class="cuisine-item-card tilt-card reveal-right delay-2">
+          <div class="cuisine-img-container">
+            <span class="cuisine-tag">Snack Gurih</span>
             <picture>
               <source srcset="img/menu/basreng.webp" type="image/webp" />
               <img src="img/menu/basreng.webp" alt="Basreng Pedas Daun Jeruk" loading="lazy" />
             </picture>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Basreng Pedas Daun Jeruk</h3>
-            <p class="featured-card-desc">Baso goreng stik renyah berpadu dengan bubuk cabai pedas asli dan wangi rempah daun jeruk segar.</p>
-            <div class="featured-card-footer">
-              <span class="featured-price">Rp 30.000</span>
+          <div class="cuisine-body">
+            <h3 class="cuisine-title">Basreng Pedas Daun Jeruk</h3>
+            <p class="cuisine-desc">Baso goreng potongan stik renyah berpadu cabai rawit pedas asli dan wangi rempah daun jeruk purut.</p>
+            <div class="cuisine-footer">
+              <span class="cuisine-price">Rp 30.000</span>
               <button 
                 type="button" 
-                class="featured-order-btn" 
+                class="btn-cuisine-add"
                 @click="$store.cart.add({ id: 3, name: 'Basreng Pedas Daun Jeruk', img: '3.webp', price: 30000 })"
               >
-                <i data-feather="plus"></i> Pesan
+                <i data-feather="plus"></i> Beli
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Featured Item 3: Bakso -->
-        <div class="featured-card tilt-card reveal-on-scroll delay-3">
-          <div class="featured-card-img-wrap">
-            <span class="featured-card-badge">Resep Legendaris</span>
+        <!-- Item 3: Bakso (reveal from left) -->
+        <div class="cuisine-item-card tilt-card reveal-left delay-3">
+          <div class="cuisine-img-container">
+            <span class="cuisine-tag">Bakso Sapi</span>
             <picture>
               <source srcset="img/menu/baso.webp" type="image/webp" />
               <img src="img/menu/baso.webp" alt="Bakso Sapi Raja Raoz" loading="lazy" />
             </picture>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Bakso Sapi Raja Raoz</h3>
-            <p class="featured-card-desc">Bakso daging sapi asli berkualitas premium, kenyal padat tanpa boraks atau zat kimia berbahaya.</p>
-            <div class="featured-card-footer">
-              <span class="featured-price">Rp 25.000</span>
+          <div class="cuisine-body">
+            <h3 class="cuisine-title">Bakso Sapi Raja Raoz</h3>
+            <p class="cuisine-desc">Bakso daging sapi asli berkualitas prima, kenyal padat tanpa bahan pengawet berbahaya.</p>
+            <div class="cuisine-footer">
+              <span class="cuisine-price">Rp 25.000</span>
               <button 
                 type="button" 
-                class="featured-order-btn" 
+                class="btn-cuisine-add"
                 @click="$store.cart.add({ id: 2, name: 'Bakso Sapi Super Raja Raoz', img: '2.webp', price: 25000 })"
               >
-                <i data-feather="plus"></i> Pesan
+                <i data-feather="plus"></i> Beli
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Featured Item 4: Kwetiau -->
-        <div class="featured-card tilt-card reveal-on-scroll delay-4">
-          <div class="featured-card-img-wrap">
-            <span class="featured-card-badge">Pilihan Kuliner</span>
+        <!-- Item 4: Kwetiau (reveal from right) -->
+        <div class="cuisine-item-card tilt-card reveal-right delay-4">
+          <div class="cuisine-img-container">
+            <span class="cuisine-tag">Kwetiau</span>
             <picture>
               <source srcset="img/menu/kwetiau.webp" type="image/webp" />
               <img src="img/menu/kwetiau.webp" alt="Kwetiau Segar Raja Raoz" loading="lazy" />
             </picture>
           </div>
-          <div class="featured-card-body">
-            <h3 class="featured-card-title">Kwetiau Segar Raja Raoz</h3>
-            <p class="featured-card-desc">Kwetiau kenyal higienis siap olah untuk kebutuhan restoran, warung makan, maupun konsumsi harian keluarga.</p>
-            <div class="featured-card-footer">
-              <span class="featured-price">Rp 15.000</span>
+          <div class="cuisine-body">
+            <h3 class="cuisine-title">Kwetiau Segar Raja Raoz</h3>
+            <p class="cuisine-desc">Kwetiau kenyal higienis siap olah untuk kebutuhan restoran, warung makan, dan kuliner keluarga.</p>
+            <div class="cuisine-footer">
+              <span class="cuisine-price">Rp 15.000</span>
               <button 
                 type="button" 
-                class="featured-order-btn" 
+                class="btn-cuisine-add"
                 @click="$store.cart.add({ id: 7, name: 'Kwetiau Segar Raja Raoz', img: 'kwetiau.webp', price: 15000 })"
               >
-                <i data-feather="plus"></i> Pesan
+                <i data-feather="plus"></i> Beli
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section: Achievements & Quality Standards (Framed Cards - Inspired by Reference)
+         ========================================================================== -->
+    <section class="section-standards" id="standards">
+      <div class="standards-header reveal-up">
+        <span class="standards-eyebrow">Pengendalian Mutu &amp; Keamanan</span>
+        <h2>Standar Keamanan Pangan &amp; <em class="italic">Sertifikasi Resmi</em></h2>
+        <p>
+          Komitmen penuh CV. Putra AR dalam menjamin kesehatan dan keselamatan konsumen melalui penerapan protokol sanitasi dan standar kebersihan industri yang ketat.
+        </p>
+      </div>
+
+      <div class="standards-framed-grid">
+        <!-- Standard 1 -->
+        <div class="standard-card tilt-card reveal-left delay-1">
+          <div class="standard-card-icon">
+            <i data-feather="shield"></i>
+          </div>
+          <h3>Sertifikasi Halal Resmi</h3>
+          <p>Seluruh bahan baku, rempah, dan proses pengolahan tersertifikasi 100% Halal dan Thoyyib sesuai ketentuan MUI dan BPJPH.</p>
+        </div>
+
+        <!-- Standard 2 -->
+        <div class="standard-card tilt-card reveal-left delay-2">
+          <div class="standard-card-icon">
+            <i data-feather="check-circle"></i>
+          </div>
+          <h3>Bebas Pengawet Berbahaya</h3>
+          <p>Seluruh lini produk teruji klinis bebas dari formalin, boraks, maupun zat pewarna sintetis terlarang untuk keamanan jangka panjang.</p>
+        </div>
+
+        <!-- Standard 3 -->
+        <div class="standard-card tilt-card reveal-right delay-3">
+          <div class="standard-card-icon">
+            <i data-feather="thermometer"></i>
+          </div>
+          <h3>Rantai Dingin Terintegrasi</h3>
+          <p>Fasilitas cold storage bersuhu konstan minus 18 derajat Celcius dan armada berpendingin menjaga kesegaran hingga tiba di tangan mitra.</p>
+        </div>
+
+        <!-- Standard 4 -->
+        <div class="standard-card tilt-card reveal-right delay-4">
+          <div class="standard-card-icon">
+            <i data-feather="cpu"></i>
+          </div>
+          <h3>Mesin Otomatis Jepang</h3>
+          <p>Didukung mesin pencetak dan pengukus otomatis presisi tinggi impor Jepang yang minim sentuhan manual dan terjamin higienis.</p>
         </div>
       </div>
     </section>
@@ -507,22 +500,22 @@
     <!-- ==========================================================================
          Section: Full Products Catalog with Alpine.js
          ========================================================================== -->
-    <section class="section" id="products" x-data="products">
-      <div class="section-header reveal-on-scroll">
-        <span class="section-badge">Katalog Lengkap</span>
-        <h2 class="section-title">
-          Pilihan Menu &amp; <em>Produk Manufaktur</em>
+    <section class="section-catalog" id="products" x-data="products">
+      <div class="catalog-header reveal-up">
+        <span class="profile-eyebrow">Daftar Produk Resmi</span>
+        <h2 class="profile-heading" style="margin-bottom: 12px;">
+          Katalog Menu &amp; <em class="italic">Pemesanan Langsung</em>
         </h2>
-        <p class="section-subtitle">
-          Temukan varian produk olahan pangan terbaik dengan standar mutu terjamin. Klik pada kartu produk untuk melihat detail spesifikasi atau tambahkan langsung ke keranjang belanja.
+        <p class="profile-body-text" style="max-width: 700px; margin: 0 auto 30px;">
+          Pilih produk olahan berkualitas dari daftar di bawah ini. Anda dapat melihat detail komposisi atau menambahkan langsung ke keranjang pemesanan.
         </p>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="catalog-controls reveal-on-scroll delay-1">
+      <!-- Filter Tabs -->
+      <div class="catalog-tabs-bar reveal-up delay-1">
         <button 
           type="button" 
-          class="category-tab-btn" 
+          class="catalog-tab-btn" 
           :class="{ 'active': activeCategory === 'all' }" 
           @click="activeCategory = 'all'"
         >
@@ -530,7 +523,7 @@
         </button>
         <button 
           type="button" 
-          class="category-tab-btn" 
+          class="catalog-tab-btn" 
           :class="{ 'active': activeCategory === 'bakso' }" 
           @click="activeCategory = 'bakso'"
         >
@@ -538,7 +531,7 @@
         </button>
         <button 
           type="button" 
-          class="category-tab-btn" 
+          class="catalog-tab-btn" 
           :class="{ 'active': activeCategory === 'otakotak' }" 
           @click="activeCategory = 'otakotak'"
         >
@@ -546,7 +539,7 @@
         </button>
         <button 
           type="button" 
-          class="category-tab-btn" 
+          class="catalog-tab-btn" 
           :class="{ 'active': activeCategory === 'snack' }" 
           @click="activeCategory = 'snack'"
         >
@@ -554,13 +547,16 @@
         </button>
       </div>
 
-      <!-- Products Grid -->
-      <div class="products-grid">
-        <template x-for="item in filteredItems" :key="item.id">
-          <div class="product-card tilt-card reveal-on-scroll">
-            <div class="product-img-wrap">
+      <!-- Products Grid (Directional Alternating Stagger) -->
+      <div class="catalog-grid">
+        <template x-for="(item, index) in filteredItems" :key="item.id">
+          <div 
+            class="catalog-product-card tilt-card reveal-up"
+            :class="index % 2 === 0 ? 'reveal-left' : 'reveal-right'"
+          >
+            <div class="catalog-img-wrap">
               <img :src="`img/products/${item.img}`" :alt="item.name" loading="lazy" />
-              <div class="product-quick-actions">
+              <div class="catalog-quick-actions">
                 <button 
                   type="button" 
                   class="quick-action-btn" 
@@ -580,24 +576,24 @@
               </div>
             </div>
 
-            <div class="product-body">
-              <span class="product-cat-tag" x-text="item.categoryLabel"></span>
-              <h3 class="product-title" x-text="item.name"></h3>
-              <div class="product-stars">
+            <div class="catalog-body">
+              <span class="catalog-category-label" x-text="item.categoryLabel"></span>
+              <h3 class="catalog-item-title" x-text="item.name"></h3>
+              <div class="catalog-stars">
                 <template x-for="star in 5">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                   </svg>
                 </template>
               </div>
-              <p class="product-desc" x-text="item.desc"></p>
-              <div class="product-bottom-bar">
+              <p class="catalog-desc" x-text="item.desc"></p>
+              <div class="catalog-bottom-row">
                 <div>
-                  <span class="product-price-val" x-text="rupiah(item.price)"></span>
-                  <span class="product-unit-info" x-text="item.unit"></span>
+                  <span class="catalog-price-val" x-text="rupiah(item.price)"></span>
+                  <span class="catalog-unit-info" x-text="item.unit"></span>
                 </div>
-                <button type="button" class="add-cart-btn" @click="$store.cart.add(item)">
-                  <i data-feather="plus"></i> Beli
+                <button type="button" class="btn-catalog-order" @click="$store.cart.add(item)">
+                  <i data-feather="plus"></i> Pesan
                 </button>
               </div>
             </div>
@@ -605,7 +601,7 @@
         </template>
       </div>
 
-      <!-- Interactive Dynamic Product Detail Modal -->
+      <!-- Dynamic Product Detail Modal -->
       <div 
         class="modal-overlay" 
         :class="{ 'active': isDetailOpen }" 
@@ -624,38 +620,38 @@
             </div>
 
             <div class="product-modal-content">
-              <span class="product-cat-tag" x-text="activeProduct ? activeProduct.categoryLabel : ''"></span>
-              <h3 style="font-size: 1.6rem; margin-bottom: 8px;" x-text="activeProduct ? activeProduct.name : ''"></h3>
+              <span class="catalog-category-label" x-text="activeProduct ? activeProduct.categoryLabel : ''"></span>
+              <h3 style="font-size: 1.6rem; margin-bottom: 8px; color: var(--color-text-main);" x-text="activeProduct ? activeProduct.name : ''"></h3>
               
-              <div class="product-stars" style="margin-bottom: 16px;">
+              <div class="catalog-stars" style="margin-bottom: 16px;">
                 <template x-for="star in 5">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                   </svg>
                 </template>
-                <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 6px;">(Rating Kualitas Tertinggi)</span>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 6px;">(Standar Mutu Pilihan)</span>
               </div>
 
               <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px;" x-text="activeProduct ? activeProduct.desc : ''"></p>
 
-              <div style="background: var(--color-surface-card); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); margin-bottom: 24px;">
+              <div style="background-color: var(--color-bg-main); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                  <span style="color: var(--color-text-dim); font-size: 0.85rem;">Kemasan / Isi:</span>
-                  <span style="font-weight: 600;" x-text="activeProduct ? activeProduct.unit : ''"></span>
+                  <span style="color: var(--color-text-muted); font-size: 0.85rem;">Kemasan / Satuan:</span>
+                  <span style="font-weight: 700;" x-text="activeProduct ? activeProduct.unit : ''"></span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
-                  <span style="color: var(--color-text-dim); font-size: 0.85rem;">Suhu Penyimpanan:</span>
-                  <span style="font-weight: 600; color: var(--color-primary);">-18°C (Frozen / Beku)</span>
+                  <span style="color: var(--color-text-muted); font-size: 0.85rem;">Suhu Rekomendasi:</span>
+                  <span style="font-weight: 700; color: var(--color-secondary);">-18°C (Frozen Food)</span>
                 </div>
               </div>
 
               <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
                 <div>
-                  <span style="font-size: 0.85rem; color: var(--color-text-dim); display: block;">Harga Resmi:</span>
+                  <span style="font-size: 0.82rem; color: var(--color-text-light); display: block;">Harga Satuan:</span>
                   <span style="font-size: 1.6rem; font-weight: 800; color: var(--color-primary);" x-text="activeProduct ? rupiah(activeProduct.price) : ''"></span>
                 </div>
-                <button type="button" class="btn-primary" @click="addToCartFromDetail()">
-                  <i data-feather="shopping-cart"></i> Tambah ke Keranjang
+                <button type="button" class="btn-solid-primary" @click="addToCartFromDetail()">
+                  <i data-feather="shopping-cart"></i> Masukkan Keranjang
                 </button>
               </div>
             </div>
@@ -665,125 +661,123 @@
     </section>
 
     <!-- ==========================================================================
-         Virtual Tour Fullscreen Video Modal
+         Section: Kemitraan & Pasokan Grosir (B2B Supply)
          ========================================================================== -->
-    <div class="modal-overlay" id="tour-modal">
-      <div class="modal-card tour-modal-card" @click.stop>
-        <button type="button" class="modal-close-icon" id="tour-close-btn" title="Tutup Video Tur">
-          <i data-feather="x"></i>
-        </button>
+    <section class="section-partnership" id="partnership">
+      <div class="partnership-box">
+        <!-- Left: Reveal from left -->
+        <div class="partnership-content reveal-left">
+          <span>Kemitraan Distribusi &amp; Pasokan Grosir</span>
+          <h2>Tumbuh Bersama Jaringan Pasokan <em>CV. Putra AR</em></h2>
+          <p>
+            Kami membuka peluang kerja sama bagi distributor skala besar, agen makanan beku, supermarket, dan jaringan warung kuliner di seluruh kota di Pulau Jawa dengan kepastian pasokan dan harga tangan pertama langsung dari pabrik.
+          </p>
 
-        <div class="tour-video-player-container">
-          <video 
-            id="tour-main-video" 
-            playsinline 
-            poster="img/imgcvputra/mainpage.webp"
-          >
-            <source src="video/factory-tour.webm" type="video/webm" />
-          </video>
+          <ul class="partnership-benefits">
+            <li>
+              <i data-feather="check-circle"></i>
+              <span>Kapasitas produksi pabrik mencapai 500 juta unit per hari</span>
+            </li>
+            <li>
+              <i data-feather="check-circle"></i>
+              <span>Harga bersaing tangan pertama produsen langsung</span>
+            </li>
+            <li>
+              <i data-feather="check-circle"></i>
+              <span>Jaminan kualitas stabil berkat otomasi mesin modern Jepang</span>
+            </li>
+            <li>
+              <i data-feather="check-circle"></i>
+              <span>Dukungan logistik armada pendingin terintegrasi ke seluruh Jawa</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="tour-player-controls">
-          <div class="tour-controls-left">
-            <button type="button" class="tour-ctrl-btn" id="tour-play-pause" title="Play / Pause">
-              <i data-feather="play"></i>
-            </button>
-            <button type="button" class="tour-ctrl-btn" id="tour-mute" title="Mute / Unmute">
-              <i data-feather="volume-2"></i>
-            </button>
-            <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">
-              Tur Virtual Fasilitas Pabrik CV. Putra AR
-            </span>
-          </div>
-
-          <div class="tour-chapters-nav">
-            <button type="button" class="tour-chapter-item active" data-chapter-time="0">
-              01. Gerbang Masuk
-            </button>
-            <button type="button" class="tour-chapter-item" data-chapter-time="20">
-              02. Mesin Otomatis
-            </button>
-            <button type="button" class="tour-chapter-item" data-chapter-time="50">
-              03. Quality Control
-            </button>
-            <button type="button" class="tour-chapter-item" data-chapter-time="80">
-              04. Cold Storage
-            </button>
-          </div>
+        <!-- Right: Reveal from right -->
+        <div class="partnership-cta-card reveal-right">
+          <h3>Konsultasi Kemitraan</h3>
+          <p>Hubungi bagian pemasaran kami untuk mendiskusikan volume pasokan, katalog harga distributor, dan jadwal pengiriman ke kota Anda.</p>
+          <a 
+            href="https://wa.me/6281310641534?text=Halo%20Tim%20Pemasaran%20CV%20Putra%20AR,%20saya%20berminat%20menjalin%20kemitraan%20distribusi%20grosir." 
+            target="_blank" 
+            class="btn-partnership-wa"
+          >
+            <i data-feather="message-circle"></i> Hubungi WhatsApp Mitra
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- ==========================================================================
          Section: Contact & Factory Location
          ========================================================================== -->
-    <section class="section section-darker" id="contact">
-      <div class="section-header reveal-on-scroll">
-        <span class="section-badge">Hubungi Kami</span>
-        <h2 class="section-title">
-          Lokasi Pabrik &amp; <em>Pusat Informasi Mitra</em>
-        </h2>
-        <p class="section-subtitle">
-          Kami menyambut kemitraan distribusi, agen grosir, reseller, dan pesanan retail dari seluruh pelosok Pulau Jawa. Silakan hubungi tim kami atau kunjungi kantor pabrik kami di Ciamis.
+    <section class="section-contact" id="contact">
+      <div class="standards-header reveal-up">
+        <span class="standards-eyebrow">Informasi Kontak &amp; Lokasi Pabrik</span>
+        <h2>Hubungi Kantor &amp; <em class="italic">Fasilitas Produksi</em></h2>
+        <p>
+          Silakan hubungi kami untuk informasi kerja sama, pemesanan produk, atau kunjungan kemitraan ke kantor kami di Kabupaten Ciamis.
         </p>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-info-cards reveal-on-scroll delay-1">
-          <div class="contact-card">
-            <div class="contact-card-icon">
+      <div class="contact-layout">
+        <!-- Left: Reveal from left -->
+        <div class="contact-cards-col reveal-left">
+          <div class="contact-box">
+            <div class="contact-box-icon">
               <i data-feather="map-pin"></i>
             </div>
-            <div class="contact-card-text">
+            <div class="contact-box-text">
               <h4>Alamat Pabrik &amp; Kantor</h4>
               <p>Desa Sukahurip, Kecamatan Ciamis, Kabupaten Ciamis, Jawa Barat 46262, Indonesia</p>
             </div>
           </div>
 
-          <div class="contact-card">
-            <div class="contact-card-icon">
+          <div class="contact-box">
+            <div class="contact-box-icon">
               <i data-feather="phone"></i>
             </div>
-            <div class="contact-card-text">
+            <div class="contact-box-text">
               <h4>Telepon Kantor Resmi</h4>
               <p>(0265) 5401232</p>
             </div>
           </div>
 
-          <div class="contact-card">
-            <div class="contact-card-icon">
+          <div class="contact-box">
+            <div class="contact-box-icon">
               <i data-feather="message-circle"></i>
             </div>
-            <div class="contact-card-text">
-              <h4>WhatsApp Layanan Pemesanan</h4>
-              <p>+62 813-1064-1534 (Layanan Cepat Reseller &amp; Agen)</p>
+            <div class="contact-box-text">
+              <h4>WhatsApp Layanan Pelanggan</h4>
+              <p>+62 813-1064-1534 (Layanan Cepat Reseller, Agen &amp; Retail)</p>
             </div>
           </div>
 
-          <div class="contact-card">
-            <div class="contact-card-icon">
+          <div class="contact-box">
+            <div class="contact-box-icon">
               <i data-feather="clock"></i>
             </div>
-            <div class="contact-card-text">
-              <h4>Jam Operasional Pengiriman</h4>
-              <p>Senin - Sabtu: Pukul 08.00 - 17.00 WIB (Minggu &amp; Libur Nasional Tetap Melayani Konsultasi)</p>
+            <div class="contact-box-text">
+              <h4>Jam Layanan Operasional</h4>
+              <p>Senin - Sabtu: Pukul 08.00 - 17.00 WIB (Minggu tetap melayani pertanyaan kemitraan)</p>
             </div>
           </div>
         </div>
 
-        <div class="contact-form-container reveal-on-scroll delay-2">
-          <h3>Kirimkan Pesan atau Pertanyaan</h3>
-          <p>Isi formulir berikut untuk konsultasi kemitraan atau informasi pasokan produk.</p>
+        <!-- Right: Reveal from right -->
+        <div class="contact-form-panel reveal-right">
+          <h3>Formulir Pertanyaan &amp; Saran</h3>
+          <p>Kirimkan pesan Anda secara langsung kepada tim manajemen kami.</p>
 
           <form class="contact-form-inner">
             <div class="form-group">
               <label for="c-name">Nama Lengkap / Nama Bisnis</label>
-              <input type="text" id="c-name" placeholder="Masukkan nama Anda" required />
+              <input type="text" id="c-name" placeholder="Masukkan nama Anda atau usaha" required />
             </div>
 
             <div class="form-group">
               <label for="c-email">Alamat Email</label>
-              <input type="email" id="c-email" placeholder="contoh@domain.com" required />
+              <input type="email" id="c-email" placeholder="nama@email.com" required />
             </div>
 
             <div class="form-group">
@@ -792,30 +786,30 @@
             </div>
 
             <div class="form-group">
-              <label for="c-msg">Pesan / Rencana Kemitraan</label>
+              <label for="c-msg">Isi Pesan atau Rencana Kemitraan</label>
               <textarea id="c-msg" rows="3" placeholder="Tuliskan kebutuhan pasokan atau pertanyaan Anda" required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary" style="justify-content: center; width: 100%;">
-              <i data-feather="send"></i> Kirim Pesan Sekarang
+            <button type="submit" class="btn-solid-primary" style="width: 100%; justify-content: center;">
+              <i data-feather="send"></i> Kirim Pesan Resmi
             </button>
           </form>
         </div>
       </div>
 
-      <!-- Google Maps Embed -->
-      <div class="map-wrapper reveal-on-scroll delay-3">
+      <!-- Google Maps Frame -->
+      <div class="map-container-frame reveal-up delay-2">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15831.310936935277!2d108.2149723!3d-7.2604373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f513aa00fa36b%3A0xd2cc3383e5d55803!2sCV.PUTRA%20AR!5e0!3m2!1sid!2sid!4v1715915755971!5m2!1sid!2sid"
           allowfullscreen=""
           loading="lazy"
-          title="Lokasi Pabrik CV. Putra AR di Google Maps"
+          title="Lokasi Pabrik CV. Putra AR di Sukahurip, Ciamis"
         ></iframe>
       </div>
     </section>
 
     <!-- ==========================================================================
-         Footer
+         Footer (Solid Deep Forest Slate - Matching Reference Bottom Section)
          ========================================================================== -->
     <footer>
       <div class="footer-top">
@@ -828,11 +822,11 @@
             <span>CV. PUTRA <em>AR</em></span>
           </div>
           <p>
-            Perusahaan industri manufaktur pangan terpercaya yang memproduksi aneka makanan beku berkualitas tinggi dengan standar kebersihan ketat dan teknologi mesin mutakhir di Ciamis, Jawa Barat.
+            Perusahaan industri manufaktur pangan terpercaya yang memproduksi aneka makanan beku berkualitas tinggi dengan standar kebersihan ketat dan teknologi mesin mutakhir di Kabupaten Ciamis, Jawa Barat.
           </p>
           <div class="footer-cert-badges">
             <div class="cert-badge-item">
-              <i data-feather="shield-check"></i>
+              <i data-feather="shield"></i>
               <span>Sertifikasi Standar Higienis Pangan</span>
             </div>
             <div class="cert-badge-item">
@@ -846,10 +840,11 @@
           <h4>Navigasi</h4>
           <ul class="footer-links">
             <li><a href="#home">Beranda</a></li>
-            <li><a href="#entrance">Tur Fasilitas Perusahaan</a></li>
-            <li><a href="#about">Tentang Kami</a></li>
-            <li><a href="#featured">Produk Unggulan</a></li>
+            <li><a href="#profile">Profil Perusahaan</a></li>
+            <li><a href="#gallery">Galeri Produk</a></li>
+            <li><a href="#standards">Standar Mutu</a></li>
             <li><a href="#products">Katalog Lengkap</a></li>
+            <li><a href="#partnership">Kemitraan Grosir</a></li>
             <li><a href="#contact">Kontak &amp; Lokasi</a></li>
           </ul>
         </div>
@@ -857,7 +852,7 @@
         <div class="footer-col">
           <h4>Varian Utama</h4>
           <ul class="footer-links">
-            <li><a href="#products">Bakso Sapi Raja Raoz</a></li>
+            <li><a href="#products">Bakso Sapi Super Raja Raoz</a></li>
             <li><a href="#products">Otak-Otak Ikan Tenggiri</a></li>
             <li><a href="#products">Basreng Pedas Daun Jeruk</a></li>
             <li><a href="#products">Kwetiau Segar Raja Raoz</a></li>
@@ -866,15 +861,15 @@
         </div>
 
         <div class="footer-col">
-          <h4>Kantor Pabrik</h4>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">
+          <h4>Kantor &amp; Pabrik</h4>
+          <p style="font-size: 0.88rem; color: #a4b0ab; line-height: 1.6; margin-bottom: 12px;">
             Sukahurip, Kabupaten Ciamis, Jawa Barat 46262, Indonesia
           </p>
-          <p style="font-size: 0.88rem; color: var(--color-primary); font-weight: 600; margin-bottom: 8px;">
-            Telp: (0265) 5401232
+          <p style="font-size: 0.88rem; color: var(--color-primary); font-weight: 700; margin-bottom: 8px;">
+            Telepon: (0265) 5401232
           </p>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted);">
-            WA: +62 813-1064-1534
+          <p style="font-size: 0.88rem; color: #a4b0ab;">
+            WhatsApp: +62 813-1064-1534
           </p>
         </div>
       </div>
@@ -897,7 +892,7 @@
     </footer>
 
     <!-- ==========================================================================
-         Floating Quick Action Buttons & Toast Container
+         Floating Quick Actions & Toast Container
          ========================================================================== -->
     <div class="floating-widget-group">
       <a 

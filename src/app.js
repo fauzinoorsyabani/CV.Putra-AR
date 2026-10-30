@@ -13,21 +13,21 @@ document.addEventListener('alpine:init', () => {
                 categoryLabel: 'Otak-Otak',
                 img: '1.webp', 
                 price: 20000,
-                desc: 'Otak-otak ikan tenggiri segar dengan racikan rempah pilihan khas Nusantara. Memiliki tekstur kenyal sempurna dan gurih alami berstandar pabrik modern.',
+                desc: 'Otak-otak ikan tenggiri segar dengan racikan bumbu rempah tradisional khas Jawa Barat. Memiliki tekstur kenyal sempurna dan cita rasa gurih alami tanpa pengawet berbahaya.',
                 rating: 5,
-                unit: '10 pcs / pack',
+                unit: 'Isi 10 pcs / pack',
                 isBestSeller: true
             },
             { 
                 id: 2, 
                 name: 'Bakso Sapi Super Raja Raoz', 
                 category: 'bakso',
-                categoryLabel: 'Bakso',
+                categoryLabel: 'Bakso Sapi',
                 img: '2.webp', 
                 price: 25000,
-                desc: 'Bakso daging sapi asli berkualitas prima dengan resep legendaris Raja Raoz. Diproduksi higienis dengan mesin modern Jepang tanpa pengawet berbahaya.',
+                desc: 'Bakso daging sapi asli berkualitas prima dengan resep legendaris Raja Raoz. Diproduksi higienis dengan mesin modern Jepang dengan tingkat kebersihan berstandar internasional.',
                 rating: 5,
-                unit: '20 pcs / pack',
+                unit: 'Isi 20 pcs / pack',
                 isBestSeller: true
             },
             { 
@@ -37,9 +37,9 @@ document.addEventListener('alpine:init', () => {
                 categoryLabel: 'Snack & Camilan',
                 img: '3.webp', 
                 price: 30000,
-                desc: 'Baso goreng potongan stik renyah berpadu dengan cabai rawit merah asli dan aroma daun jeruk purut segar yang pedas, gurih, dan nagih.',
+                desc: 'Baso goreng potongan stik renyah berpadu dengan cabai rawit merah asli dan aroma daun jeruk purut segar yang pedas, gurih, dan menggugah selera.',
                 rating: 5,
-                unit: '250 gram',
+                unit: 'Netto 250 gram',
                 isBestSeller: true
             },
             { 
@@ -49,9 +49,9 @@ document.addEventListener('alpine:init', () => {
                 categoryLabel: 'Snack & Camilan',
                 img: '4.webp', 
                 price: 15000,
-                desc: 'Cimol kenyal berisi olahan daging ayam cincang gurih, siap goreng dengan hasil mekar renyah di luar dan lembut di dalam.',
+                desc: 'Cimol kenyal berisi olahan daging ayam cincang gurih, siap digoreng dengan tekstur mekar renyah di luar dan lembut empuk di bagian dalam.',
                 rating: 5,
-                unit: '300 gram',
+                unit: 'Netto 300 gram',
                 isBestSeller: false
             },
             { 
@@ -61,9 +61,9 @@ document.addEventListener('alpine:init', () => {
                 categoryLabel: 'Snack & Camilan',
                 img: '5.webp', 
                 price: 30000,
-                desc: 'Camilan stik bawang renyah tradisional dengan harum seledri dan rempah bawang segar pilihan yang cocok untuk teman santai.',
+                desc: 'Camilan stik bawang renyah tradisional dengan paduan seledri segar dan rempah bawang pilihan berkualitas tinggi.',
                 rating: 5,
-                unit: '250 gram',
+                unit: 'Netto 250 gram',
                 isBestSeller: false
             },
             { 
@@ -73,9 +73,9 @@ document.addEventListener('alpine:init', () => {
                 categoryLabel: 'Snack & Camilan',
                 img: '6.webp', 
                 price: 30000,
-                desc: 'Baso goreng potongan stik rasa ayam gurih renyah tanpa rasa pedas, cocok dinikmati semua kalangan dan anak-anak.',
+                desc: 'Baso goreng potongan stik rasa ayam gurih renyah tanpa rasa pedas, sangat cocok dinikmati bersama keluarga dan anak-anak.',
                 rating: 5,
-                unit: '250 gram',
+                unit: 'Netto 250 gram',
                 isBestSeller: false
             },
         ],
@@ -141,8 +141,8 @@ document.addEventListener('alpine:init', () => {
                 });
             }
 
-            // Trigger animation on cart badge & show toast
-            showToast(`${newItem.name} ditambahkan ke keranjang.`);
+            // Show toast feedback & bounce quantity badge
+            showToast(`${newItem.name} telah ditambahkan ke keranjang.`);
             const badge = document.querySelector('.quantity-badge');
             if (badge) {
                 badge.classList.remove('badge-pop');
@@ -197,7 +197,7 @@ function showToast(message) {
     }, 2800);
 }
 
-// Rupiah formatting helper
+// Indonesian Rupiah formatting helper
 function rupiah(number) {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const cartItems = Alpine.store('cart').items;
             if (!cartItems.length) {
-                showToast('Keranjang Anda masih kosong.');
+                showToast('Keranjang pesanan masih kosong.');
                 return;
             }
 
@@ -268,18 +268,18 @@ function formatWhatsAppOrder(customer, items, total) {
         '-------------------------------------------',
         `Tanggal: ${dateStr}`,
         '',
-        'DATA PEMESAN:',
+        'DATA PEMESAN / MITRA:',
         `Nama: ${customer.name || '-'}`,
         `Nomor Telepon/WA: ${customer.phone || '-'}`,
         `Alamat Pengiriman: ${customer.address || '-'}`,
-        `Catatan Tambahan: ${customer.notes || '-'}`,
+        `Catatan Khusus: ${customer.notes || '-'}`,
         '',
-        'RINCIAN PESANAN:',
+        'RINCIAN PRODUK DIPESAN:',
         itemsList,
         '-------------------------------------------',
         `TOTAL PEMBAYARAN: ${rupiah(total)}`,
         '-------------------------------------------',
-        'Mohon konfirmasi ketersediaan stok, ongkos kirim, dan nomor rekening pembayaran.',
-        'Terima kasih telah memesan di CV. Putra AR.'
+        'Mohon konfirmasi ketersediaan pasokan, estimasi jadwal kirim, dan nomor rekening resmi CV. Putra AR.',
+        'Terima kasih telah bermitra dengan CV. Putra AR.'
     ].join('\n');
 }
