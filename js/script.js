@@ -101,7 +101,124 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Directional Scroll Animations (Left, Right, Up, Stagger)
+    // 3. Automated Ken Burns Hero Slideshow Controller
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    const heroSlideCounter = document.getElementById('hero-slide-counter');
+    const heroSlideCaption = document.getElementById('hero-slide-caption');
+    const heroPrevBtn = document.getElementById('hero-prev');
+    const heroNextBtn = document.getElementById('hero-next');
+    const heroSection = document.querySelector('.hero-corporate');
+
+    if (heroSlides.length > 0) {
+        let currentSlideIdx = 0;
+        const totalSlides = heroSlides.length;
+        const slideIntervalTime = 5500;
+        let slideTimer = null;
+
+        function updateSlideUI(newIdx) {
+            heroSlides.forEach((slide) => slide.classList.remove('active'));
+            heroDots.forEach((dot) => dot.classList.remove('active'));
+
+            currentSlideIdx = newIdx;
+
+            const activeSlide = heroSlides[currentSlideIdx];
+            if (activeSlide) {
+                activeSlide.classList.add('active');
+
+                if (heroDots[currentSlideIdx]) {
+                    heroDots[currentSlideIdx].classList.add('active');
+                }
+
+                if (heroSlideCounter) {
+                    const currentFormatted = String(currentSlideIdx + 1).padStart(2, '0');
+                    const totalFormatted = String(totalSlides).padStart(2, '0');
+                    heroSlideCounter.textContent = `${currentFormatted} / ${totalFormatted}`;
+                }
+
+                if (heroSlideCaption) {
+                    const captionText = activeSlide.getAttribute('data-caption') || '';
+                    heroSlideCaption.textContent = captionText;
+                }
+            }
+        }
+
+        function nextHeroSlide() {
+            const nextIdx = (currentSlideIdx + 1) % totalSlides;
+            updateSlideUI(nextIdx);
+        }
+
+        function prevHeroSlide() {
+            const prevIdx = (currentSlideIdx - 1 + totalSlides) % totalSlides;
+            updateSlideUI(prevIdx);
+        }
+
+        function startAutoplay() {
+            if (slideTimer) clearInterval(slideTimer);
+            slideTimer = setInterval(nextHeroSlide, slideIntervalTime);
+        }
+
+        function resetAutoplay() {
+            startAutoplay();
+        }
+
+        if (heroNextBtn) {
+            heroNextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                nextHeroSlide();
+                resetAutoplay();
+            });
+        }
+
+        if (heroPrevBtn) {
+            heroPrevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                prevHeroSlide();
+                resetAutoplay();
+            });
+        }
+
+        heroDots.forEach((dot, idx) => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateSlideUI(idx);
+                resetAutoplay();
+            });
+        });
+
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', () => {
+                if (slideTimer) clearInterval(slideTimer);
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                startAutoplay();
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            heroSection.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            heroSection.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDiff = touchEndX - touchStartX;
+                if (swipeDiff < -40) {
+                    nextHeroSlide();
+                    resetAutoplay();
+                } else if (swipeDiff > 40) {
+                    prevHeroSlide();
+                    resetAutoplay();
+                }
+            }, { passive: true });
+        }
+
+        updateSlideUI(0);
+        startAutoplay();
+    }
+
+    // 4. Directional Scroll Animations (Left, Right, Up, Stagger)
     const directionalElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up, .reveal-scale');
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -118,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     directionalElements.forEach(el => revealObserver.observe(el));
 
-    // 4. Animated Number Counters
+    // 5. Animated Number Counters
     const counterElements = document.querySelectorAll('.counter-number');
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -151,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counterElements.forEach(counter => counterObserver.observe(counter));
 
-    // 5. Interactive 3D Card Hover / Subtle Perspective Tilt
+    // 6. Interactive 3D Card Hover / Subtle Perspective Tilt
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -171,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Back To Top Button
+    // 7. Back To Top Button
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -182,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Contact Form Handler
+    // 8. Contact Form Handler
     const contactForm = document.querySelector('.contact-form-inner');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {

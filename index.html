@@ -194,9 +194,52 @@
     </aside>
 
     <!-- ==========================================================================
-         Hero Section (Clean Plain Pre-text Without Background Box)
+         Hero Section with Automated Zooming Slideshow
          ========================================================================== -->
     <header class="hero-corporate" id="home">
+      <!-- Automated Ken Burns Zooming Slideshow Background -->
+      <div class="hero-slider-bg" id="hero-slider">
+        <div class="hero-slide active" data-caption="Fasilitas Manufaktur Berstandar Higienis Modern">
+          <picture>
+            <source srcset="img/imgcvputra/mainpage.webp" type="image/webp" />
+            <img src="img/imgcvputra/mainpage.webp" alt="Fasilitas Pabrik CV. Putra AR" />
+          </picture>
+        </div>
+        <div class="hero-slide" data-caption="Produksi Bakso Sapi Super Raja Raoz Daging Pilihan">
+          <picture>
+            <source srcset="img/gallery/mie_bakso_real.webp" type="image/webp" />
+            <img src="img/gallery/mie_bakso_real.webp" alt="Bakso Sapi Super Raja Raoz" />
+          </picture>
+        </div>
+        <div class="hero-slide" data-caption="Area Produksi Cleanroom Berteknologi Otomasi">
+          <picture>
+            <source srcset="img/gallery/facility_cleanroom.webp" type="image/webp" />
+            <img src="img/gallery/facility_cleanroom.webp" alt="Area Pemrosesan Bersih CV. Putra AR" />
+          </picture>
+        </div>
+        <div class="hero-slide" data-caption="Olahan Otak-Otak Ikan Tenggiri Segar &amp; Lembut">
+          <picture>
+            <source srcset="img/gallery/otak_otak_real.webp" type="image/webp" />
+            <img src="img/gallery/otak_otak_real.webp" alt="Otak-Otak Ikan CV. Putra AR" />
+          </picture>
+        </div>
+        <div class="hero-slide" data-caption="Manufaktur Kwetiau Basah Segar Tekstur Kenyal Alami">
+          <picture>
+            <source srcset="img/gallery/kwetiau_real.webp" type="image/webp" />
+            <img src="img/gallery/kwetiau_real.webp" alt="Kwetiau Basah Segar" />
+          </picture>
+        </div>
+        <div class="hero-slide" data-caption="Penyimpanan Cold Storage &amp; Jaringan Distribusi Cepat">
+          <picture>
+            <source srcset="img/gallery/cold_storage_armada.webp" type="image/webp" />
+            <img src="img/gallery/cold_storage_armada.webp" alt="Armada Cold Storage CV. Putra AR" />
+          </picture>
+        </div>
+      </div>
+
+      <!-- Solid Dark Navy Scrim Overlay -->
+      <div class="hero-slider-overlay"></div>
+
       <div class="hero-inner-container">
         <!-- Pre-text with NO background box/pill as requested -->
         <span class="hero-pre-text reveal-up">
@@ -260,6 +303,30 @@
               <p>Camilan baso goreng renyah dengan cabai asli &amp; jeruk purut</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Slider Controls Bar at Bottom of Hero -->
+      <div class="hero-slider-controls">
+        <div class="hero-slide-info">
+          <span class="hero-slide-counter" id="hero-slide-counter">01 / 06</span>
+          <span class="hero-slide-caption" id="hero-slide-caption">Fasilitas Manufaktur Berstandar Higienis Modern</span>
+        </div>
+        <div class="hero-slider-nav-btns">
+          <button type="button" class="hero-nav-arrow" id="hero-prev" aria-label="Slide Sebelumnya" title="Sebelumnya">
+            <i data-feather="chevron-left"></i>
+          </button>
+          <div class="hero-dots-container" id="hero-slider-dots">
+            <span class="hero-dot active" data-slide="0"></span>
+            <span class="hero-dot" data-slide="1"></span>
+            <span class="hero-dot" data-slide="2"></span>
+            <span class="hero-dot" data-slide="3"></span>
+            <span class="hero-dot" data-slide="4"></span>
+            <span class="hero-dot" data-slide="5"></span>
+          </div>
+          <button type="button" class="hero-nav-arrow" id="hero-next" aria-label="Slide Berikutnya" title="Berikutnya">
+            <i data-feather="chevron-right"></i>
+          </button>
         </div>
       </div>
     </header>

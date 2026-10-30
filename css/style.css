@@ -388,17 +388,85 @@ button, input, textarea {
 }
 
 /* ==========================================================================
-   Hero Section (NO Background on pre-text, Pure Blue Corporate Style)
+   Hero Section with Automated Ken Burns Zooming Slideshow
    ========================================================================== */
 .hero-corporate {
-  padding: 70px 6% 65px;
-  background-color: var(--color-bg-main);
   position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 6% 100px;
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Automated Ken Burns Zooming Slideshow Background */
+.hero-slider-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.3s ease-in-out;
+  overflow: hidden;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.hero-slide picture,
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes heroKenBurnsZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.16);
+  }
+}
+
+.hero-slide.active img {
+  animation: heroKenBurnsZoom 6.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Solid Dark Navy Scrim Overlay */
+.hero-slider-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 19, 36, 0.68);
+  z-index: 2;
+}
+
 .hero-inner-container {
-  max-width: 1180px;
+  position: relative;
+  z-index: 3;
+  max-width: 1080px;
   margin: 0 auto;
   text-align: center;
 }
@@ -409,36 +477,36 @@ button, input, textarea {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  color: #60a5fa;
   background: none;
   border: none;
   padding: 0;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .hero-main-title {
-  font-size: 3.4rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.025em;
-  color: var(--color-text-main);
+  color: #ffffff;
   max-width: 960px;
-  margin: 0 auto 22px;
+  margin: 0 auto 24px;
 }
 
 .hero-main-title em {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #38bdf8;
 }
 
 .hero-lead-text {
-  font-size: 1.12rem;
-  color: var(--color-text-muted);
-  max-width: 740px;
-  margin: 0 auto 34px;
+  font-size: 1.15rem;
+  color: #e2e8f0;
+  max-width: 760px;
+  margin: 0 auto 36px;
   line-height: 1.75;
 }
 
@@ -448,7 +516,7 @@ button, input, textarea {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 46px;
+  margin-bottom: 30px;
 }
 
 .btn-solid-primary {
@@ -459,7 +527,7 @@ button, input, textarea {
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 700;
-  padding: 13px 26px;
+  padding: 14px 28px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   border: none;
@@ -470,86 +538,168 @@ button, input, textarea {
   background-color: var(--color-primary-hover);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
 }
 
 .btn-solid-secondary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-main);
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 13px 24px;
+  padding: 14px 26px;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  backdrop-filter: blur(8px);
   transition: var(--transition-fast);
 }
 
 .btn-solid-secondary:hover {
-  background-color: var(--color-primary-light);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-/* Hero Showcase Cards */
+/* Hero Trio Showcase (3 Product Highlights) */
 .hero-trio-showcase {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 15px;
-}
-
-.hero-trio-item {
-  background-color: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-subtle);
-  transition: var(--transition-normal);
+  gap: 18px;
+  margin-top: 36px;
   text-align: left;
 }
 
+.hero-trio-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: rgba(10, 19, 36, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  backdrop-filter: blur(8px);
+  transition: var(--transition-fast);
+}
+
 .hero-trio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--color-primary);
+  border-color: #38bdf8;
+  transform: translateY(-3px);
 }
 
 .hero-trio-img {
-  height: 200px;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  background-color: #f1f5f9;
+  flex-shrink: 0;
 }
 
 .hero-trio-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-smooth);
-}
-
-.hero-trio-item:hover .hero-trio-img img {
-  transform: scale(1.05);
-}
-
-.hero-trio-caption {
-  padding: 16px 20px;
 }
 
 .hero-trio-caption h4 {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-text-main);
-  margin-bottom: 4px;
+  color: #ffffff;
+  margin-bottom: 2px;
 }
 
 .hero-trio-caption p {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .hero-trio-showcase {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Slider Controls Bar at Bottom of Hero */
+.hero-slider-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 6%;
+  right: 6%;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-slide-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-slide-counter {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  font-weight: 800;
+  color: #38bdf8;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+}
+
+.hero-slide-caption {
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.hero-slider-nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-nav-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.hero-nav-arrow:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.hero-dots-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 10px;
+}
+
+.hero-dot {
+  width: 26px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.hero-dot.active {
+  background-color: #38bdf8;
+  width: 42px;
 }
 
 /* ==========================================================================
@@ -2119,8 +2269,13 @@ footer {
   .product-modal-grid {
     grid-template-columns: 1fr;
   }
-  .hero-trio-showcase {
-    grid-template-columns: 1fr;
+  .hero-slider-controls {
+    position: static;
+    margin-top: 30px;
+    justify-content: center;
+  }
+  .hero-slide-info {
+    display: none;
   }
 }
 
