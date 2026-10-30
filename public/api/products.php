@@ -1,0 +1,123 @@
+<?php
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+$products = [
+    [
+        'id' => 1,
+        'name' => 'Otak-Otak Ikan Premium',
+        'category' => 'otakotak',
+        'categoryLabel' => 'Otak-Otak',
+        'img' => 'img/products/1.webp',
+        'price' => 20000,
+        'desc' => 'Otak-otak ikan tenggiri segar dengan racikan bumbu rempah tradisional khas Jawa Barat. Tekstur kenyal sempurna dan cita rasa gurih alami tanpa pengawet berbahaya.',
+        'rating' => 5,
+        'unit' => 'Isi 10 pcs / pack',
+        'isBestSeller' => true
+    ],
+    [
+        'id' => 2,
+        'name' => 'Bakso Sapi Super Raja Raoz',
+        'category' => 'bakso',
+        'categoryLabel' => 'Bakso Sapi',
+        'img' => 'img/products/2.webp',
+        'price' => 25000,
+        'desc' => 'Bakso daging sapi asli berkualitas prima dengan resep legendaris Raja Raoz. Diproduksi higienis dengan mesin modern Jepang berstandar internasional.',
+        'rating' => 5,
+        'unit' => 'Isi 20 pcs / pack',
+        'isBestSeller' => true
+    ],
+    [
+        'id' => 3,
+        'name' => 'Basreng Pedas Daun Jeruk',
+        'category' => 'snack',
+        'categoryLabel' => 'Snack & Camilan',
+        'img' => 'img/products/3.webp',
+        'price' => 30000,
+        'desc' => 'Baso goreng potongan stik renyah berpadu cabai rawit merah asli dan aroma daun jeruk purut segar yang pedas, gurih, dan menggugah selera.',
+        'rating' => 5,
+        'unit' => 'Netto 250 gram',
+        'isBestSeller' => true
+    ],
+    [
+        'id' => 4,
+        'name' => 'Cimol Ayam Gurih Krispi',
+        'category' => 'snack',
+        'categoryLabel' => 'Snack & Camilan',
+        'img' => 'img/products/4.webp',
+        'price' => 15000,
+        'desc' => 'Cimol kenyal berisi olahan daging ayam cincang gurih, siap digoreng dengan tekstur mekar renyah di luar dan lembut empuk di bagian dalam.',
+        'rating' => 5,
+        'unit' => 'Netto 300 gram',
+        'isBestSeller' => false
+    ],
+    [
+        'id' => 5,
+        'name' => 'Stik Bawang Gurih Renyah',
+        'category' => 'snack',
+        'categoryLabel' => 'Snack & Camilan',
+        'img' => 'img/products/5.webp',
+        'price' => 30000,
+        'desc' => 'Camilan stik bawang renyah tradisional dengan paduan seledri segar dan rempah bawang pilihan berkualitas tinggi.',
+        'rating' => 5,
+        'unit' => 'Netto 250 gram',
+        'isBestSeller' => false
+    ],
+    [
+        'id' => 6,
+        'name' => 'Basreng Ayam Original',
+        'category' => 'snack',
+        'categoryLabel' => 'Snack & Camilan',
+        'img' => 'img/products/6.webp',
+        'price' => 30000,
+        'desc' => 'Baso goreng potongan stik rasa ayam gurih renyah tanpa rasa pedas, sangat cocok dinikmati bersama keluarga dan anak-anak.',
+        'rating' => 5,
+        'unit' => 'Netto 250 gram',
+        'isBestSeller' => false
+    ],
+    [
+        'id' => 7,
+        'name' => 'Kwetiau Segar Raja Raoz',
+        'category' => 'kwetiau',
+        'categoryLabel' => 'Kwetiau',
+        'img' => 'img/menu/kwetiau.webp',
+        'price' => 15000,
+        'desc' => 'Kwetiau basah higienis siap olah untuk kebutuhan restoran, warung makan, katering, dan kuliner keluarga dengan tekstur kenyal alami.',
+        'rating' => 5,
+        'unit' => 'Netto 500 gram',
+        'isBestSeller' => true
+    ],
+    [
+        'id' => 8,
+        'name' => 'Bakso Urat Raja Raoz',
+        'category' => 'bakso',
+        'categoryLabel' => 'Bakso Sapi',
+        'img' => 'img/menu/baso.webp',
+        'price' => 28000,
+        'desc' => 'Bakso daging sapi asli dengan potongan urat renyah kenyal beraroma kaldu gurih khas, diproduksi menggunakan mesin modern higienis.',
+        'rating' => 5,
+        'unit' => 'Isi 15 pcs / pack',
+        'isBestSeller' => false
+    ]
+];
+
+$category = isset($_GET['category']) ? trim($_GET['category']) : 'all';
+
+if ($category !== 'all') {
+    $products = array_values(array_filter($products, function($item) use ($category) {
+        return $item['category'] === $category;
+    }));
+}
+
+echo json_encode([
+    'status' => 'success',
+    'total' => count($products),
+    'data' => $products
+], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
