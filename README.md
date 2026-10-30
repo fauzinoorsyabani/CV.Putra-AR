@@ -1,75 +1,81 @@
-# 📦 **Putra AR - Food Manufacturing Supply** 🍟🍕
+# CV. Putra AR - Food Manufacturing & Supply
 
-Putra AR adalah perusahaan manufaktur makanan yang menyediakan berbagai produk berkualitas tinggi. Kami mendistribusikan produk kami ke seluruh Pulau Jawa dengan bahan baku yang segar, higienis, dan terjangkau. 
-
----
-
-## **Menu** 📋
-
-- **Home** 🏠
-- **Product** 🛍️
-- **About** 🏢
-- **Gallery** 🖼️
-- **Contact** 📞
+CV. Putra AR adalah perusahaan industri manufaktur makanan terkemuka yang berpusat di Sukahurip, Kabupaten Ciamis, Jawa Barat. Berdiri resmi sejak tahun 2017, perusahaan memproduksi aneka produk olahan makanan beku dan camilan berkualitas tinggi, didukung oleh mesin-mesin modern berstandar Jepang dan lebih dari 300 tenaga kerja terampil. Produk kami didistribusikan ke berbagai kota dan mitra dagang di seluruh Pulau Jawa.
 
 ---
 
-## **Produk Unggulan** 🏅
+## Daftar Navigasi
 
-Kami menawarkan produk unggulan dengan kualitas terbaik yang tersedia di seluruh Pulau Jawa. Produk kami terbuat dari bahan baku segar dan higienis dengan harga yang terjangkau. Berikut adalah daftar produk utama kami:
+- Home (Beranda)
+- About Us (Tentang Perusahaan)
+- Factory Tour (Fasilitas & Tur Perusahaan)
+- Top Products (Produk Unggulan)
+- Menu / Catalog (Katalog Produk & Pemesanan)
+- Contact (Kontak & Lokasi Pabrik)
 
-### **Project 1: Otak-Otak** 🐟
+---
+
+## Produk Unggulan
+
+CV. Putra AR menawarkan produk berkualitas tinggi dengan higienitas terjamin dan harga yang kompetitif:
+
+### Kategori 1: Otak-Otak Ikan
 - Otak-Otak Isi 10
 - Otak-Otak Isi 12
 - Otak-Otak AR 10
-- Otak-Otak Pedas 🌶️
+- Otak-Otak Pedas
 - Otak-Otak Raja Raoz 10
 - Otak-Otak Raja Raoz 12
 
-### **Project 2: Bakso** 🍲
+### Kategori 2: Bakso Sapi Raja Raoz
 - Bakso Unyil isi 20
 - Bakso Tenis isi 5
 - Bakso SM isi 10 dan 50
-- Bakso BM URAT-10 isi 10
-- Bakso RAJA RAOZ BMS isi 25 dan 50
-- Bakso RAJA RAOZ UNYIL isi 20
+- Bakso BM Urat-10 isi 10
+- Bakso Raja Raoz BMS isi 25 dan 50
+- Bakso Raja Raoz Unyil isi 20
 
-### **Project 3: Kwetiaw** 🍜
-- KWETIAU PANJANG RR 500
-- KWETIAU ACAK RR 500 dan 400
-- KWETIAU PANJANG ADUHAI 400
-- KWETIAU ACAK ADUHAI 400
-- KWETIAU RR PANJANG 400 & 450
-- KWETIAU RR ACAK 450
+### Kategori 3: Kwetiau & Olahan Mie
+- Kwetiau Panjang RR 500
+- Kwetiau Acak RR 500 dan 400
+- Kwetiau Panjang Aduhai 400
+- Kwetiau Acak Aduhai 400
+- Kwetiau RR Panjang 400 dan 450
+- Kwetiau RR Acak 450
 
-### **Project 4: Tahu Bulat** 🧀
-- TAHU BOLA BESAR
-- TAHU BOLA SEDANG
-- TAHU BOLA KECIL
-- TAHU BOLA CIMOL
-
----
-
-## **Tentang Kami** 🌟
-
-Kami adalah perusahaan industri makanan yang berbasis di **Sukahurip, Kabupaten Ciamis, Jawa Barat, Indonesia**. Kami berkomitmen untuk menggunakan bahan baku berkualitas tinggi dan memastikan bahwa proses produksi kami memenuhi standar keselamatan dan kesehatan yang ketat.
-
-### **Alamat & Kontak** 📍📞
-- **Alamat**: Sukahurip, Kabupaten Ciamis, Jawa Barat 46262, Indonesia
-- **Telp**: (0265) 5401232
+### Kategori 4: Aneka Snack & Camilan
+- Basreng Pedas Daun Jeruk
+- Basreng Ayam Original
+- Stik Bawang Renyah
+- Cimol Ayam Gurih
+- Tahu Bola Besar & Sedang
 
 ---
 
-## **Kualitas & Pengendalian Keamanan** ✅
+## Tentang Perusahaan
 
-- **Kualitas Tinggi**: Kami adalah pemasok makanan dengan produk yang tersebar di seluruh Pulau Jawa, yang fokus pada penggunaan bahan baku terbaik.
-- **Pengendalian Keamanan**: Proses produksi kami mengikuti standar keselamatan dan kesehatan yang berlaku untuk memastikan kualitas dan keamanan produk.
+- **Nama Perusahaan**: CV. Putra AR (Sedang dalam proses peningkatan status menjadi PT)
+- **Tahun Pendirian**: 2017 (Berkembang dari PD)
+- **Kapasitas Produksi**: Mencapai 500 juta unit per hari
+- **Teknologi**: Menggunakan lini mesin modern yang diimpor dari Jepang
+- **Tenaga Kerja**: Lebih dari 300 karyawan profesional
+
+### Alamat & Kontak
+- **Alamat Pabrik & Kantor**: Sukahurip, Kabupaten Ciamis, Jawa Barat 46262, Indonesia
+- **Telepon**: (0265) 5401232
+- **Layanan Pemesanan WhatsApp**: +62 813-1064-1534
 
 ---
 
-## **Berita Terbaru** 📰
+## Jaminan Mutu & Keamanan Pangan
 
-- **02.12.2022**: Produk terbaru bulan Desember 2022: **BASRENG & SAKURA** 🎉🍣
-- **02.11.2022**: Produk terbaru bulan November 2022: **TOP 6 & RR 8 COKLAT** 🍫
+- **Bahan Baku Pilihan**: Menggunakan daging dan ikan segar dengan seleksi mutu yang ketat.
+- **Standar Sanitasi Tinggi**: Seluruh lini produksi mematuhi protokol kebersihan dan keselamatan kerja.
+- **Teknologi Rantai Dingin**: Fasilitas cold storage bersuhu terkontrol untuk menjaga kesegaran hingga ke tangan konsumen.
 
 ---
+
+## Pembaruan Produk
+
+- Produk Desember 2022: Basreng dan Sakura
+- Produk November 2022: Top 6 dan RR 8 Coklat
