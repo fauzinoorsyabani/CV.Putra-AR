@@ -9,20 +9,25 @@
 [![Backend](https://img.shields.io/badge/backend-PHP_8_REST_API-0A2540?style=flat-square)](https://php.net/)
 [![Design System](https://img.shields.io/badge/design-Zero_Gradients_%7C_Zero_Emojis-0A2540?style=flat-square)](#quality-and-verification-gates)
 [![Halal Certified](https://img.shields.io/badge/halal-100%25_MUI_%26_BPJPH-1976D2?style=flat-square)](#food-safety-and-quality-compliance)
-[![License](https://img.shields.io/badge/license-MIT-0A2540?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/license-Proprietary_%26_Confidential-red?style=flat-square)](#proprietary-licensing--confidentiality)
+[![Domain](https://img.shields.io/badge/domain-cvputraar.my.id-0A2540?style=flat-square)](https://cvputraar.my.id)
+[![Vercel Deployment](https://img.shields.io/badge/deployment-live-1976D2?style=flat-square)](https://cvputraar.my.id)
 
 Production-grade web portal, digital multi-tier SKU catalog, and cold-chain partnership distribution engine engineered for **CV. Putra AR** — an established food manufacturing enterprise founded in 2017 in Sukahurip, Ciamis, West Java. Operating with a 309+ workforce, Japanese-standard automated processing machinery, and integrated cold storage logistics, the platform serves 100+ partner distribution networks across Java.
+
+* **Official Enterprise URL**: [https://cvputraar.my.id](https://cvputraar.my.id)
+* **Production Mirror / Edge**: [https://cv-putra-ar.vercel.app](https://cv-putra-ar.vercel.app)
 
 ---
 
 ### Repository Topics & Tags
-`#react19` `#vite` `#framer-motion` `#php-rest-api` `#b2b-wholesale` `#food-manufacturing` `#cold-chain-logistics` `#ciamis-indonesia` `#halal-certified` `#bpjph` `#zero-gradient` `#industrial-web` `#supply-chain-portal` `#cleanroom-manufacturing`
+`#react19` `#vite` `#framer-motion` `#php-rest-api` `#b2b-wholesale` `#food-manufacturing` `#cold-chain-logistics` `#ciamis-indonesia` `#halal-certified` `#bpjph` `#zero-gradient` `#industrial-web` `#supply-chain-portal` `#cleanroom-manufacturing` `#enterprise-software` `#proprietary`
 
 ---
 
 ## Quick Navigation
 
-[Overview](#overview) · [Architectural Comparison](#architectural-comparison) · [System Architecture](#system-architecture) · [B2B Wholesale Architecture](#b2b-wholesale-architecture) · [Manufacturing Divisions & SKUs](#manufacturing-divisions--skus) · [REST API Documentation](#rest-api-documentation) · [Quality & Verification Gates](#quality-and-verification-gates) · [Industrial Operations & Machinery](#industrial-operations--machinery) · [Directory Tree](#directory-tree) · [Quick Start](#quick-start) · [Deployment & CI/CD](#deployment--cicd) · [License & Authorship](#license--authorship)
+[Overview](#overview) · [Architectural Comparison](#architectural-comparison) · [System Architecture](#system-architecture) · [B2B Wholesale Architecture](#b2b-wholesale-architecture) · [Manufacturing Divisions & SKUs](#manufacturing-divisions--skus) · [REST API Documentation](#rest-api-documentation) · [Quality & Verification Gates](#quality-and-verification-gates) · [Industrial Operations & Machinery](#industrial-operations--machinery) · [Directory Tree](#directory-tree) · [Quick Start](#quick-start) · [Deployment, DNS & CI/CD](#deployment-dns--cicd) · [Proprietary Licensing & Confidentiality](#proprietary-licensing--confidentiality)
 
 ---
 
@@ -364,13 +369,36 @@ npm run build
 npm run preview -- --port 8080 --host 127.0.0.1
 ```
 
-Access the application in your browser at `http://127.0.0.1:8080/`.
+Access the application in your browser at `https://cvputraar.my.id` (Production) or `http://127.0.0.1:8080/` (Local Preview).
 
 ---
 
-## Deployment & CI/CD
+## Deployment, DNS & CI/CD
 
-Deployment is automated via GitHub Actions on every push to the `main` branch:
+The platform utilizes a dual-path production delivery strategy combining Vercel Anycast Edge infrastructure with continuous deployment via GitHub Actions.
+
+### Custom Domain & DNS Mapping (SumoPod)
+
+The official custom domain **`cvputraar.my.id`** is registered on SumoPod (valid through 30/10/2027) and routed to Vercel's global edge network:
+
+| Host / Name | Record Type | Value / Destination | TTL | Function |
+| :--- | :--- | :--- | :--- | :--- |
+| `@` | **A** | `76.76.21.21` | Automatic / 300 | Primary root apex routing to Vercel Anycast IP |
+| `www` | **CNAME** | `cname.vercel-dns.com` | Automatic / 300 | Subdomain redirect with 307 forward to apex |
+
+* **SSL/TLS Security**: Automated edge certificate provisioning via Let's Encrypt Wildcard with HTTP Strict Transport Security (HSTS) enforced.
+* **Global Edge Network**: Sub-50ms TTFB across Indonesian and Southeast Asian ISP networks via Singapore/Jakarta edge nodes.
+
+### Continuous Deployment Pipelines
+
+#### 1. Vercel Production Pipeline
+* **Trigger**: Automatic deployment on `git push` to `main` branch.
+* **Build Command**: `vite build`
+* **Output Directory**: `dist`
+* **Edge Functions & API**: Reverse-proxy and static asset caching with zero configuration.
+
+#### 2. GitHub Actions Automated Verification & Sync
+Deployment is mirrored via GitHub Actions on every push to the `main` branch:
 
 ```yaml
 name: Deploy website on push
@@ -395,7 +423,10 @@ jobs:
       run: npm run build
     
     - name: Sync files
+      if: ${{ env.FTP_SERVER != '' }}
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -409,12 +440,38 @@ In your GitHub repository settings under **Settings → Secrets and variables �
 * `FTP_USERNAME`: Authorized FTP user with write access to `public_html/`.
 * `FTP_PASSWORD`: Secret password for the FTP user.
 
-Once pushed, GitHub Actions compiles `dist/` (including all static React bundles and `dist/api/*.php` endpoints) and transfers them to your server with zero downtime.
+Once pushed, GitHub Actions compiles `dist/` (including all static React bundles and `dist/api/*.php` endpoints) and deploys them with zero downtime.
 
 ---
 
-## License & Authorship
+## Proprietary Licensing & Confidentiality
 
-* **Client & Corporate Entity**: [CV. Putra AR](http://127.0.0.1:8080) — Sukahurip, Kabupaten Ciamis, Jawa Barat 46262.
-* **Lead Software Engineer**: **Fauzi Noorsyabani** (B.Eng in Computer Science, Institut Teknologi Bandung, Cum Laude).
-* **License**: Released under the [MIT License](LICENSE). All corporate marks, logos, and product photography remain property of CV. Putra AR.
+**PROPRIETARY & CONFIDENTIAL ENTERPRISE SOFTWARE**
+
+Copyright (c) 2017–2026 **CV. Putra AR**. All rights reserved.
+
+This source code, user interface designs, architectural blueprints, and associated media assets are proprietary commercial property belonging exclusively to **CV. Putra AR** (Sukahurip, Kabupaten Ciamis, Jawa Barat 46262, Indonesia).
+
+1. **Internal Use Only**: Strictly intended for internal factory operations, B2B wholesale partner intake, and brand distribution of CV. Putra AR.
+2. **No Unauthorized Redistribution**: No part of this software may be copied, modified, distributed, sublicensed, decompiled, or reverse-engineered in any form or by any means without prior explicit written authorization from CV. Putra AR management.
+3. **Intellectual Property Rights**: All trademarks, brand marks (Raja Raoz, CV. Putra AR), packaging imagery, product formulations, and manufacturing media remain sole corporate assets.
+
+---
+
+## Authorship & Engineering Credits
+
+* **Enterprise Client**: [CV. Putra AR](https://cvputraar.my.id) — Sukahurip, Kabupaten Ciamis, Jawa Barat 46262.
+* **Lead Software Engineer**: **Fauzi Noorsyabani**
+  - **Education**: Institut Teknologi Bandung (B.Eng in Computer Science, Cum Laude, GPA: 3.59/4.00)
+  - **Projects & Core Engineering**:
+    * *Blockchain-based Access Control with Decentralized XACML Approach* (Thesis on decentralized payment gateway access control)
+    * *Tutoor AI by PhotoSolve* (Backend engineering serving 2,000,000+ global users using socket orchestration, ElevenLabs TTS, OpenAI, Deepgram STT)
+  - **Competitive Programming & Honors**:
+    * *Finalist*, ICPC Asia Pacific Championship 2024 (Asia Pacific)
+    * *Honorable Mention*, ICPC Asia Jakarta Regional 2023 (South East Asia)
+    * *Top 100*, IEEExtreme 17.0 2023 Worldwide (Placed 3rd in Indonesia, 42nd internationally out of 6,000+ teams)
+    * *Top 10 (9th Place)*, ICPC Indonesia National Contest (INC) 2023
+    * *Honorable Mention (5th Place)*, ICPC Multi-Provincial COMPFEST 15 (2023)
+    * *Honorable Mention (5th Place)*, ICPC Multi-Provincial Ideafuse (2023)
+    * *Project Leader*, Mile Zero Project 2.0 (Led team of 70 in collaboration with Google & IEEE ITB Student Branch)
+  - **Core Technical Stack**: JavaScript, TypeScript, Golang, Java, PHP, Ruby, Python, C, C++, Hyperledger Fabric, PostgreSQL, MongoDB, React, Express, REST APIs, CI/CD, Algorithmic Optimization.
