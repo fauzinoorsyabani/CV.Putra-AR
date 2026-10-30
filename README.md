@@ -1,4 +1,4 @@
-# CV. Putra AR - Food Manufacturing Supply & B2B Wholesale Platform
+# CV. Putra AR — Food Manufacturing Supply & B2B Wholesale Platform
 
 ![CV. Putra AR Platform Preview](public/img/preview-banner.webp)
 
@@ -13,10 +13,12 @@
 [![Domain](https://img.shields.io/badge/domain-cvputraar.my.id-0A2540?style=flat-square)](https://cvputraar.my.id)
 [![Vercel Deployment](https://img.shields.io/badge/deployment-live-1976D2?style=flat-square)](https://cvputraar.my.id)
 
-Production-grade web portal, digital multi-tier SKU catalog, and cold-chain partnership distribution engine engineered for **CV. Putra AR** — an established food manufacturing enterprise founded in 2017 in Sukahurip, Ciamis, West Java. Operating with a 309+ workforce, Japanese-standard automated processing machinery, and integrated cold storage logistics, the platform serves 100+ partner distribution networks across Java.
+Production B2B wholesale platform, digital multi-tier SKU catalog, and cold-chain partnership portal engineered for **CV. Putra AR** — an established food manufacturing enterprise founded in 2017 in Sukahurip, Ciamis, West Java. Operating with a 309+ workforce, Japanese-standard automated machinery, and integrated cold storage distribution, the platform coordinates commercial wholesale supply across 100+ partner networks throughout Java.
 
 * **Official Enterprise URL**: [https://cvputraar.my.id](https://cvputraar.my.id)
 * **Production Mirror / Edge**: [https://cv-putra-ar.vercel.app](https://cv-putra-ar.vercel.app)
+* **REST API Endpoint**: [https://cvputraar.my.id/api/products.php](https://cvputraar.my.id/api/products.php)
+* **Plant Dispatch Hotline**: `(0265) 5401232` · **WhatsApp**: `+62 813-1064-1534`
 
 ---
 
@@ -25,68 +27,81 @@ Production-grade web portal, digital multi-tier SKU catalog, and cold-chain part
 
 ---
 
-## Quick Navigation
+## Contents
 
-[Overview](#overview) · [Architectural Comparison](#architectural-comparison) · [System Architecture](#system-architecture) · [B2B Wholesale Architecture](#b2b-wholesale-architecture) · [Manufacturing Divisions & SKUs](#manufacturing-divisions--skus) · [REST API Documentation](#rest-api-documentation) · [Quality & Verification Gates](#quality-and-verification-gates) · [Industrial Operations & Machinery](#industrial-operations--machinery) · [Directory Tree](#directory-tree) · [Quick Start](#quick-start) · [Deployment, DNS & CI/CD](#deployment-dns--cicd) · [Proprietary Licensing & Confidentiality](#proprietary-licensing--confidentiality)
+[Overview](#overview) · [The Problem & The Solution](#the-problem--the-solution) · [Why This is Not a Static Catalog](#why-this-is-not-a-static-catalog) · [Architecture](#architecture) · [Kinetic Viewfinder & Single-Line Typography](#kinetic-viewfinder--single-line-typography) · [B2B Wholesale Architecture](#b2b-wholesale-architecture) · [Manufacturing Divisions & Multi-Tier SKUs](#manufacturing-divisions--multi-tier-skus) · [REST API Documentation](#rest-api-documentation) · [Quality & Verification Gates](#quality-and-verification-gates) · [Industrial Operations & Machinery](#industrial-operations--machinery) · [What This Platform Does Not Claim](#what-this-platform-does-not-claim) · [Tech Stack](#tech-stack) · [Directory Tree](#directory-tree) · [Quick Start](#quick-start) · [Deployment, DNS & Cloud Edge](#deployment-dns--cloud-edge) · [Proprietary Licensing & Confidentiality](#proprietary-licensing--confidentiality) · [Authorship & Engineering Credits](#authorship--engineering-credits)
 
 ---
 
 ## Overview
 
-Modern food manufacturing enterprises require strict separation between public brand credibility, real-time B2B catalog distribution, food safety compliance audits, and wholesale partnership intake. Traditional static web pages fail to represent complex multi-tier pricing structures, cannot validate dynamic catalog queries against cold-storage availability, and lack responsive industrial visual storytelling.
+Modern food manufacturing enterprises operate at the intersection of strict hygiene standards, cold-chain logistical constraints, and multi-tier wholesale distribution. Traditional static web brochures fail to bridge the gap between high-volume commercial buyers and factory dispatch: they cannot calculate dynamic tiered discounts, cannot communicate lab-tested food safety compliance, suffer from unstructured inquiry handling, and lack the industrial visual storytelling required to project manufacturing scale.
 
-**CV. Putra AR Web Platform** addresses this challenge through a decoupled Full-Stack architecture:
-1. **Kinetic Presentation Layer**: An immersive single-page application built on **React 19, Vite 8, and Framer Motion**, featuring a 24 FPS documentary camera viewfinder HUD, anamorphic lens metadata tickers, and automated Ken Burns cinematic scene transitions.
+**CV. Putra AR Web Platform** solves this through a decoupled Full-Stack architecture:
+1. **Kinetic Presentation Layer**: Built on **React 19, Vite 8, and Framer Motion**, featuring a 24 FPS documentary camera viewfinder HUD, anamorphic lens telemetry tickers, and Ken Burns cinematic scene transitions.
 2. **Single-Line Kinetic Typography**: A responsive headline switcher engineered with strict mathematical clamp constraints and `white-space: nowrap` rules, guaranteeing zero line breaks across desktop, tablet, and mobile displays.
 3. **Stateless PHP REST API Engine**: Lightweight, modular API endpoints (`/api/products.php`, `/api/inquiry.php`, `/api/partnership.php`) delivering fast JSON serialization, parameter sanitization, and structured validation.
 4. **Automated 3-Tier B2B Wholesale Engine**: Programmatic discount calculation and territorial protection rules for Resellers (15%), Regional Agents (25%), and City Distributors (Factory Gate).
-5. **Zero-Downtime Deployment**: Continuous delivery powered by GitHub Actions that builds production assets and deploys clean bundles via secure FTP.
+5. **Continuous Multi-Cloud Delivery**: Automated GitHub Actions CI/CD pipeline paired with Vercel Anycast edge distribution and SumoPod DNS routing at `cvputraar.my.id`.
 
 ---
 
-## Architectural Comparison
+## The Problem & The Solution
 
-| Dimension | Legacy Architecture (v1.0) | Modern Full-Stack Platform (v2.0) |
-| :--- | :--- | :--- |
-| **Frontend Framework** | Static HTML5 + Vanilla JS | **React 19 + Vite 8 SPA** with component modularity |
-| **Motion Pacing** | Static layout with manual slider buttons | **Framer Motion 24 FPS Viewfinder & Ken Burns transitions** |
-| **Headline Rendering** | Multi-line wrapped paragraph copy | **Responsive single-line clamped kinetic typewriter** |
-| **Data Interface** | Hardcoded DOM elements | **Stateless PHP 8 REST API with JSON response format** |
-| **Wholesale Intake** | Unstructured manual WhatsApp chat | **Algorithmic 3-Tier wholesale evaluation & validation** |
-| **Order Processing** | Manual text message drafting | **CartContext state machine with structured invoice generator** |
-| **Visual Aesthetic** | Mixed gradients and arbitrary colors | **Strict solid Corporate Blue system (Zero Gradients, Zero Emojis)** |
-| **Deployment Lifecycle** | Manual file transfers | **Automated GitHub Actions CI/CD with zero downtime** |
+### The Problem
+Commercial buyers ordering food products by the hundreds or thousands of packs require clear visibility into product specifications, net packaging weights, temperature requirements, and volume discounts. When a food manufacturer relies on static text or fragmented chat threads:
+* Price discrepancies emerge between retail MSRP (HET) and volume tiers.
+* Food safety documentation (MUI Halal, BPJPH, lab test reports) is buried or difficult to verify.
+* Order requests arrive with missing details (destination territory, delivery fleet requirements, volume breakdown), creating administrative friction and delaying factory dispatch.
+
+### The Solution
+A unified, single-purpose enterprise portal where every manufacturing division is digitized into clear SKU specifications, wholesale tiers are evaluated programmatically, and prospective distribution partners receive verified registration workflows with direct routing to plant operations.
 
 ---
 
-## System Architecture
+## Why This is Not a Static Catalog
+
+| Dimension | Generic Static Brochure | Typical E-Commerce Template | CV. Putra AR B2B Enterprise Platform |
+| :--- | :--- | :--- | :--- |
+| **Wholesale Tier Calculation** | None (Manual negotiation) | Complex plugin overhead | **Programmatic 3-Tier engine (15%, 25%, Factory Gate)** |
+| **Hero Motion & Pacing** | Static stock photos | Generic CSS slider | **24 FPS documentary HUD with anamorphic lens telemetry** |
+| **Typography Discipline** | Arbitrary line breaks | Paragraph wrapping | **Single-Line Clamped Kinetic Typewriter (`white-space: nowrap`)** |
+| **Backend Footprint** | None | Heavy MySQL/WordPress bloat | **Stateless PHP 8 REST API (<15ms response latency)** |
+| **Visual Design Philosophy** | Mixed gradients & emojis | Template themes | **Strict Solid Corporate Blue System (Zero Gradients, Zero Emojis)** |
+| **Cold-Chain Visibility** | Text footnote | Ignored | **Dedicated Standards Lab & Temperature Telemetry (-35°C to -18°C)** |
+| **Inquiry Hand-off** | Raw email form | Retail checkout cart | **CartContext state machine compiling structured factory invoices** |
+| **Deployment & Edge** | Manual FTP uploads | Server-dependent hosting | **Vercel Anycast Edge + GitHub Actions CI/CD (Zero Downtime)** |
+
+---
+
+## Architecture
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Partner as B2B Partner / Buyer
-    participant UI as React 19 Frontend (SPA)
+    actor Partner as B2B Partner / Wholesale Buyer
+    participant UI as React 19 SPA (Framer Motion)
     participant State as Cart & Filter Context
-    participant API as PHP REST API Layer
-    participant Dispatch as WhatsApp / Plant Dispatch
+    participant API as Stateless PHP REST API
+    participant Dispatch as Plant Dispatch Hotline (+62 813-1064-1534)
 
-    Partner->>UI: Browse SKU Catalog / Filter Division
+    Partner->>UI: Filter SKU Division (Bakso / Otak-Otak / Kwetiau / Camilan)
     UI->>API: GET /api/products.php?category={division}
-    API-->>UI: 200 OK [JSON SKU Array with wholesale pricing]
+    API-->>UI: 200 OK [JSON SKU Array with wholesale pricing & specs]
     
-    Partner->>UI: Add SKUs to Cart (Wholesale Volume)
+    Partner->>UI: Select Wholesale Order Quantity
     UI->>State: Dispatch ADD_ITEM / UPDATE_QTY
     State->>State: Compute tiered subtotal & weight payload
     
-    alt Standard Catalog Inquiry
-        Partner->>UI: Submit Wholesale Order
-        UI->>Dispatch: Open WhatsApp Dispatch (+62 813-1064-1534) with Formatted Invoice
-    else Formal Partnership Application
-        Partner->>UI: Submit 3-Tier B2B Application Form
-        UI->>API: POST /api/partnership.php [Tier, Territory, Volume]
+    alt Direct Catalog Wholesale Inquiry
+        Partner->>UI: Submit Wholesale Invoice
+        UI->>Dispatch: Open Plant WhatsApp Dispatch with Structured Purchase Order
+    else Formal 3-Tier B2B Partnership Application
+        Partner->>UI: Submit Multi-Tier Partnership Dossier
+        UI->>API: POST /api/partnership.php [Tier, Territory, Monthly Volume]
         API->>API: Validate volume bounds & territorial exclusivity
         API-->>UI: 200 OK [Application Reference Code]
-        UI-->>Partner: Display Application Confirmation & Verification Status
+        UI-->>Partner: Display Application Dossier & Priority Telemetry
     end
 ```
 
@@ -98,6 +113,7 @@ sequenceDiagram
    - `CartDrawer.jsx`: Slide-over shopping drawer with dynamic quantity multipliers and total sum calculation.
    - `StandardsLab.jsx`: Lab test documentation, Halal compliance showcase, and cold-chain temperature verification.
    - `Partnership.jsx`: Multi-tier wholesale portal with interactive benefit breakdown and qualification matrices.
+   - `ContactSection.jsx`: Direct communication channels to plant management and Sukahurip manufacturing facility map.
 2. **Application State Layer (`src/context/CartContext.jsx`)**:
    - Context-driven cart management with persistent local state.
    - Automated currency formatting (`Intl.NumberFormat('id-ID', 'IDR')`).
@@ -107,7 +123,30 @@ sequenceDiagram
    - Enforced `Content-Type: application/json` headers with strict HTTP verb routing.
 4. **Build & Distribution Layer (`.github/workflows/main.yml`)**:
    - Vite 8 bundling client assets with relative pathing (`base: './'`).
-   - GitHub Actions automated FTP synchronization directly into the live web root.
+   - Continuous deployment on push via Vercel edge and GitHub Actions.
+
+---
+
+## Kinetic Viewfinder & Single-Line Typography
+
+A signature element of the platform is the cinematic documentary hero presentation. Designed to evoke industrial documentary film cameras, it presents real manufacturing footage with authentic technical metadata:
+
+* **Live View Viewfinder HUD**: Displays an authentic 24 FPS recording indicator (`● REC // LIVE VIEW`), running timecode counter (`00:01:07:04`), and anamorphic lens telemetry (`ANAMORPHIC 35MM // T1.5 | ISO 200 | 24 FPS`).
+* **Automated Ken Burns Motion**: Background manufacturing imagery gently scales and translates over 8-second intervals, providing fluid visual pacing without abrupt cuts.
+* **Single-Line Kinetic Typewriter Constraint**:
+  The hero headline transitions dynamically across industrial value propositions:
+  - `"Dedikasi Mutu Pangan Terbaik Nusantara"`
+  - `"Otomasi Manufaktur Berstandar Jepang"`
+  - `"Kemitraan Grosir Terpercaya se-Jawa"`
+  
+  To prevent awkward layout shifts and maintain visual authority, the typography is mathematically bounded:
+  ```css
+  font-size: clamp(1.15rem, 3.2vw, 2.75rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  ```
+  This constraint guarantees that regardless of screen resolution (from 320px mobile viewports to 4K ultra-wide monitors), the headline **never wraps to a second line**.
 
 ---
 
@@ -126,7 +165,7 @@ CV. Putra AR implements an automated 3-Tier wholesale partnership structure desi
 
 ---
 
-## Manufacturing Divisions & SKUs
+## Manufacturing Divisions & Multi-Tier SKUs
 
 ```
 CV. Putra AR Manufacturing Output
@@ -147,7 +186,6 @@ CV. Putra AR Manufacturing Output
 ```
 
 ### Food Safety and Quality Compliance
-
 * **100% Halal Certified**: Registered under official MUI & Badan Penyelenggara Jaminan Produk Halal (BPJPH).
 * **Zero Hazardous Preservatives**: Lab-tested zero formalin, zero borax, zero synthetic bleaching agents.
 * **Integrated Cold Chain**: Blast-frozen at -35°C within 45 minutes of cooking; stored continuously at -18°C to -24°C in industrial cold rooms.
@@ -157,7 +195,7 @@ CV. Putra AR Manufacturing Output
 
 ## REST API Documentation
 
-Base URL: `http://<domain>/api` (or relative `./api/`)
+Base URL: `https://cvputraar.my.id/api` (or relative `./api/`)
 
 ### 1. Product Catalog Endpoint
 * **Endpoint**: `GET /api/products.php`
@@ -167,7 +205,7 @@ Base URL: `http://<domain>/api` (or relative `./api/`)
 
 **Example Request**:
 ```bash
-curl -s -X GET "http://127.0.0.1:8080/api/products.php?category=bakso"
+curl -s -X GET "https://cvputraar.my.id/api/products.php?category=bakso"
 ```
 
 **Example Response**:
@@ -212,7 +250,7 @@ curl -s -X GET "http://127.0.0.1:8080/api/products.php?category=bakso"
 
 **Example Request**:
 ```bash
-curl -s -X POST "http://127.0.0.1:8080/api/inquiry.php" \
+curl -s -X POST "https://cvputraar.my.id/api/inquiry.php" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Budi Santoso",
@@ -290,6 +328,30 @@ CV. Putra AR operates with automated high-speed machinery following Japanese hyg
                ▼
 [ Central Cold Storage (-20°C Buffer) & Refrigerated Distribution Fleet ]
 ```
+
+---
+
+## What This Platform Does Not Claim
+
+Being explicit about the exact boundaries of the software ensures engineering integrity:
+* **Not a Retail Consumer D2C Marketplace**: The platform is explicitly built for wholesale B2B inquiries and partnership agreements. It does not process individual retail grocery payments online.
+* **No Database Bloat**: Product catalogs and wholesale pricing matrices are maintained statelessly with fast in-memory JSON queries, eliminating heavy database servers on shared environments.
+* **No Speculative Logistics**: Deliveries are verified against cold-chain refrigerated fleet schedules before dispatch confirmation; no automated order completes without logistics verification.
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Why This One |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **React 19** | Concurrent rendering, sub-second hydration, zero runtime UI flickers |
+| **Build System** | **Vite 8** | Sub-750ms production builds with ESM tree-shaking and relative asset pathing |
+| **Kinetic Motion** | **Framer Motion 12** | Deterministic 24 FPS documentary HUD ticker, Ken Burns transitions, and viewfinder telemetry |
+| **Backend Services** | **Stateless PHP 8 REST API** | Zero database connection bloat, sub-15ms execution on any server, native JSON serialization |
+| **Edge Infrastructure** | **Vercel Anycast Edge** | Global edge network, automated Let's Encrypt Wildcard SSL, sub-50ms TTFB across Southeast Asia |
+| **Custom Domain & DNS** | **SumoPod DNS (`cvputraar.my.id`)** | Enterprise domain with direct `76.76.21.21` A-record apex and `cname.vercel-dns.com` alias |
+| **State Management** | **React Context** | Zero-dependency shopping cart and wholesale volume aggregator with persistent LocalStorage |
+| **Design System** | **Industrial Corporate Blue** | Strict solid `#0A2540` and `#1976D2` contrast compliance without gradients or decorative distractions |
 
 ---
 
@@ -373,7 +435,7 @@ Access the application in your browser at `https://cvputraar.my.id` (Production)
 
 ---
 
-## Deployment, DNS & CI/CD
+## Deployment, DNS & Cloud Edge
 
 The platform utilizes a dual-path production delivery strategy combining Vercel Anycast Edge infrastructure with continuous deployment via GitHub Actions.
 
