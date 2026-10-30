@@ -20,9 +20,18 @@ jobs:
       run: npm run build
     
     - name: Sync files
+      if: ${{ env.FTP_SERVER != '' }}
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
+
+    - name: Verification Notice
+      if: ${{ env.FTP_SERVER == '' }}
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      run: echo "Build verified successfully. To enable live FTP sync, configure FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD in GitHub Repository Secrets."
