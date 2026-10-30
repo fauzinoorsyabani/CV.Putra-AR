@@ -18,7 +18,7 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Custom Stylesheet (Bright & Warm Luxury Corporate Style) -->
+    <!-- Custom Stylesheet (Bright & Solid Corporate Blue Aesthetic) -->
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- Alpine.js Core & Application Store -->
@@ -30,7 +30,7 @@
     <!-- Top Scroll Progress Bar -->
     <div class="scroll-progress-bar"></div>
 
-    <!-- Top Corporate Notice Bar -->
+    <!-- Top Corporate Information Bar -->
     <div class="top-notice-bar">
       <div class="top-notice-left">
         <div class="top-notice-item">
@@ -55,27 +55,25 @@
     </div>
 
     <!-- ==========================================================================
-         Navbar
+         Navbar (Short & Concise Text Links)
          ========================================================================== -->
     <nav class="navbar">
       <a href="#home" class="navbar-brand">
         <picture>
           <source srcset="img/imgcvputra/logoatas.webp" type="image/webp" />
-          <img src="img/imgcvputra/logoatas.webp" alt="CV. Putra AR Logo" class="brand-logo" width="48" height="48" />
+          <img src="img/imgcvputra/logoatas.webp" alt="CV. Putra AR Logo" class="brand-logo" width="44" height="44" />
         </picture>
-        <div class="brand-text-block">
-          <span class="brand-name">CV. PUTRA AR</span>
-          <span class="brand-tagline">Food Manufacturing Supply</span>
-        </div>
+        <span class="brand-name">CV. PUTRA <em>AR</em></span>
       </a>
 
+      <!-- Short concise links -->
       <div class="navbar-nav">
         <a href="#home">Beranda</a>
         <a href="#profile">Profil</a>
-        <a href="#gallery">Galeri Produk</a>
-        <a href="#standards">Standar Mutu</a>
-        <a href="#products">Katalog Menu</a>
-        <a href="#partnership">Kemitraan</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#standards">Standar</a>
+        <a href="#products">Menu</a>
+        <a href="#partnership">Mitra</a>
         <a href="#contact">Kontak</a>
       </div>
 
@@ -102,7 +100,7 @@
         </button>
 
         <a href="#partnership" class="btn-nav-cta">
-          <i data-feather="briefcase"></i> Kemitraan Grosir
+          <i data-feather="briefcase"></i> Grosir
         </a>
 
         <button type="button" class="action-btn" id="hamburger-menu" title="Menu Navigasi" aria-label="Menu">
@@ -113,7 +111,7 @@
       <!-- Quick Search Dropdown -->
       <div class="search-form">
         <i data-feather="search"></i>
-        <input type="search" id="search-box" placeholder="Cari produk olahan, bakso, atau camilan..." autocomplete="off" />
+        <input type="search" id="search-box" placeholder="Cari bakso, otak-otak, camilan..." autocomplete="off" />
       </div>
     </nav>
 
@@ -196,11 +194,12 @@
     </aside>
 
     <!-- ==========================================================================
-         Hero Section (Bright, Elegant & Corporate)
+         Hero Section (Clean Plain Pre-text Without Background Box)
          ========================================================================== -->
     <header class="hero-corporate" id="home">
       <div class="hero-inner-container">
-        <span class="hero-pre-badge reveal-up">
+        <!-- Pre-text with NO background box/pill as requested -->
+        <span class="hero-pre-text reveal-up">
           Perusahaan Manufaktur Pangan Resmi • Berdiri Sejak 2017
         </span>
 
@@ -221,13 +220,13 @@
           </a>
         </div>
 
-        <!-- Hero Triple Showcase (Inspired by Reference Banner Layout) -->
+        <!-- Hero Triple Showcase (Using Real Visuals) -->
         <div class="hero-trio-showcase reveal-up delay-4">
           <div class="hero-trio-item tilt-card">
             <div class="hero-trio-img">
               <picture>
-                <source srcset="img/menu/otakotak.webp" type="image/webp" />
-                <img src="img/menu/otakotak.webp" alt="Otak-Otak Ikan Raja Raoz" loading="lazy" />
+                <source srcset="img/gallery/otak_otak_real.webp" type="image/webp" />
+                <img src="img/gallery/otak_otak_real.webp" alt="Otak-Otak Ikan Tenggiri Segar" loading="lazy" />
               </picture>
             </div>
             <div class="hero-trio-caption">
@@ -239,8 +238,8 @@
           <div class="hero-trio-item tilt-card">
             <div class="hero-trio-img">
               <picture>
-                <source srcset="img/menu/baso.webp" type="image/webp" />
-                <img src="img/menu/baso.webp" alt="Bakso Sapi Super Raja Raoz" loading="lazy" />
+                <source srcset="img/gallery/mie_bakso_real.webp" type="image/webp" />
+                <img src="img/gallery/mie_bakso_real.webp" alt="Bakso Sapi Super Raja Raoz" loading="lazy" />
               </picture>
             </div>
             <div class="hero-trio-caption">
@@ -267,11 +266,10 @@
 
     <!-- ==========================================================================
          Section: Company Profile & Core Milestones
-         (Inspired by reference: "Serving Customers For Over A Decade")
          ========================================================================== -->
     <section class="section-profile" id="profile">
       <div class="profile-container">
-        <!-- Left Column: Content sliding from left -->
+        <!-- Left: Slide from Left -->
         <div class="profile-content reveal-left">
           <span class="profile-eyebrow">Profil &amp; Sejarah Perusahaan</span>
           <h2 class="profile-heading">
@@ -303,7 +301,7 @@
           </div>
         </div>
 
-        <!-- Right Column: Visual sliding from right -->
+        <!-- Right: Slide from Right -->
         <div class="profile-visual reveal-right">
           <div class="profile-img-card tilt-card">
             <picture>
@@ -313,7 +311,7 @@
                 alt="Fasilitas Pabrik CV. Putra AR Ciamis" 
                 loading="lazy" 
                 width="600" 
-                height="420"
+                height="410"
               />
             </picture>
           </div>
@@ -327,7 +325,7 @@
     </section>
 
     <!-- ==========================================================================
-         Section: Cuisine & Product Gallery (Warm Sand - Inspired by Reference)
+         Section: Cuisine & Product Gallery (Cool Blue Tint Section)
          ========================================================================== -->
     <section class="section-cuisine-gallery" id="gallery">
       <div class="gallery-header-row reveal-up">
@@ -342,15 +340,15 @@
         </div>
       </div>
 
-      <!-- Mosaic Grid (Alternating Left & Right entrance animations) -->
+      <!-- Mosaic Grid with Directional Entrance Animations -->
       <div class="cuisine-mosaic-grid">
         <!-- Item 1: Otak Otak (reveal from left) -->
         <div class="cuisine-item-card tilt-card reveal-left delay-1">
           <div class="cuisine-img-container">
             <span class="cuisine-tag">Otak-Otak</span>
             <picture>
-              <source srcset="img/menu/otakotak.webp" type="image/webp" />
-              <img src="img/menu/otakotak.webp" alt="Otak-Otak Ikan Raja Raoz" loading="lazy" />
+              <source srcset="img/gallery/otak_otak_real.webp" type="image/webp" />
+              <img src="img/gallery/otak_otak_real.webp" alt="Otak-Otak Ikan Raja Raoz" loading="lazy" />
             </picture>
           </div>
           <div class="cuisine-body">
@@ -399,13 +397,13 @@
           <div class="cuisine-img-container">
             <span class="cuisine-tag">Bakso Sapi</span>
             <picture>
-              <source srcset="img/menu/baso.webp" type="image/webp" />
-              <img src="img/menu/baso.webp" alt="Bakso Sapi Raja Raoz" loading="lazy" />
+              <source srcset="img/gallery/mie_bakso_real.webp" type="image/webp" />
+              <img src="img/gallery/mie_bakso_real.webp" alt="Bakso Sapi Raja Raoz" loading="lazy" />
             </picture>
           </div>
           <div class="cuisine-body">
             <h3 class="cuisine-title">Bakso Sapi Raja Raoz</h3>
-            <p class="cuisine-desc">Bakso daging sapi asli berkualitas prima, kenyal padat tanpa bahan pengawet berbahaya.</p>
+            <p class="cuisine-desc">Bakso daging sapi asli berkualitas prima, kenyal padat tanpa bahan pengawet kimia berbahaya.</p>
             <div class="cuisine-footer">
               <span class="cuisine-price">Rp 25.000</span>
               <button 
@@ -424,8 +422,8 @@
           <div class="cuisine-img-container">
             <span class="cuisine-tag">Kwetiau</span>
             <picture>
-              <source srcset="img/menu/kwetiau.webp" type="image/webp" />
-              <img src="img/menu/kwetiau.webp" alt="Kwetiau Segar Raja Raoz" loading="lazy" />
+              <source srcset="img/gallery/kwetiau_real.webp" type="image/webp" />
+              <img src="img/gallery/kwetiau_real.webp" alt="Kwetiau Olahan Higienis" loading="lazy" />
             </picture>
           </div>
           <div class="cuisine-body">
@@ -447,7 +445,7 @@
     </section>
 
     <!-- ==========================================================================
-         Section: Achievements & Quality Standards (Framed Cards - Inspired by Reference)
+         Section: Standards, Facilities & Quality Laboratory
          ========================================================================== -->
     <section class="section-standards" id="standards">
       <div class="standards-header reveal-up">
@@ -459,40 +457,72 @@
       </div>
 
       <div class="standards-framed-grid">
-        <!-- Standard 1 -->
+        <!-- Standard 1: Cleanroom facility photo -->
         <div class="standard-card tilt-card reveal-left delay-1">
-          <div class="standard-card-icon">
-            <i data-feather="shield"></i>
+          <div class="standard-card-img">
+            <picture>
+              <source srcset="img/gallery/facility_cleanroom.webp" type="image/webp" />
+              <img src="img/gallery/facility_cleanroom.webp" alt="Fasilitas Sterilisasi & Cleanroom" loading="lazy" />
+            </picture>
           </div>
-          <h3>Sertifikasi Halal Resmi</h3>
-          <p>Seluruh bahan baku, rempah, dan proses pengolahan tersertifikasi 100% Halal dan Thoyyib sesuai ketentuan MUI dan BPJPH.</p>
+          <div class="standard-card-body">
+            <div class="standard-card-icon">
+              <i data-feather="shield"></i>
+            </div>
+            <h3>Sertifikasi Halal Resmi</h3>
+            <p>Seluruh bahan baku, bumbu rempah, dan proses pengolahan tersertifikasi 100% Halal dan Thoyyib sesuai ketentuan MUI dan BPJPH.</p>
+          </div>
         </div>
 
-        <!-- Standard 2 -->
+        <!-- Standard 2: Quality testing lab photo -->
         <div class="standard-card tilt-card reveal-left delay-2">
-          <div class="standard-card-icon">
-            <i data-feather="check-circle"></i>
+          <div class="standard-card-img">
+            <picture>
+              <source srcset="img/gallery/quality_lab.webp" type="image/webp" />
+              <img src="img/gallery/quality_lab.webp" alt="Laboratorium Uji Mutu Pangan" loading="lazy" />
+            </picture>
           </div>
-          <h3>Bebas Pengawet Berbahaya</h3>
-          <p>Seluruh lini produk teruji klinis bebas dari formalin, boraks, maupun zat pewarna sintetis terlarang untuk keamanan jangka panjang.</p>
+          <div class="standard-card-body">
+            <div class="standard-card-icon">
+              <i data-feather="check-circle"></i>
+            </div>
+            <h3>Bebas Pengawet Kimia</h3>
+            <p>Seluruh lini produk teruji klinis bebas dari formalin, boraks, maupun zat pewarna sintetis terlarang untuk keamanan konsumsi.</p>
+          </div>
         </div>
 
-        <!-- Standard 3 -->
+        <!-- Standard 3: Cold storage facility photo -->
         <div class="standard-card tilt-card reveal-right delay-3">
-          <div class="standard-card-icon">
-            <i data-feather="thermometer"></i>
+          <div class="standard-card-img">
+            <picture>
+              <source srcset="img/gallery/cold_storage_armada.webp" type="image/webp" />
+              <img src="img/gallery/cold_storage_armada.webp" alt="Fasilitas Cold Storage Pendingin" loading="lazy" />
+            </picture>
           </div>
-          <h3>Rantai Dingin Terintegrasi</h3>
-          <p>Fasilitas cold storage bersuhu konstan minus 18 derajat Celcius dan armada berpendingin menjaga kesegaran hingga tiba di tangan mitra.</p>
+          <div class="standard-card-body">
+            <div class="standard-card-icon">
+              <i data-feather="thermometer"></i>
+            </div>
+            <h3>Rantai Dingin -18°C</h3>
+            <p>Fasilitas cold storage bersuhu konstan minus 18 derajat Celcius dan armada pendingin menjaga kesegaran hingga tiba di tangan mitra.</p>
+          </div>
         </div>
 
-        <!-- Standard 4 -->
+        <!-- Standard 4: Japanese machinery photo -->
         <div class="standard-card tilt-card reveal-right delay-4">
-          <div class="standard-card-icon">
-            <i data-feather="cpu"></i>
+          <div class="standard-card-img">
+            <picture>
+              <source srcset="img/tentang-kami-cvputraar.webp" type="image/webp" />
+              <img src="img/tentang-kami-cvputraar.webp" alt="Mesin Otomatis Modern" loading="lazy" />
+            </picture>
           </div>
-          <h3>Mesin Otomatis Jepang</h3>
-          <p>Didukung mesin pencetak dan pengukus otomatis presisi tinggi impor Jepang yang minim sentuhan manual dan terjamin higienis.</p>
+          <div class="standard-card-body">
+            <div class="standard-card-icon">
+              <i data-feather="cpu"></i>
+            </div>
+            <h3>Mesin Otomatis Jepang</h3>
+            <p>Didukung mesin pencetak dan pengukus otomatis presisi tinggi impor Jepang yang minim sentuhan manual dan terjamin higienis.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -641,7 +671,7 @@
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                   <span style="color: var(--color-text-muted); font-size: 0.85rem;">Suhu Rekomendasi:</span>
-                  <span style="font-weight: 700; color: var(--color-secondary);">-18°C (Frozen Food)</span>
+                  <span style="font-weight: 700; color: var(--color-primary);">-18°C (Frozen Food)</span>
                 </div>
               </div>
 
@@ -665,7 +695,7 @@
          ========================================================================== -->
     <section class="section-partnership" id="partnership">
       <div class="partnership-box">
-        <!-- Left: Reveal from left -->
+        <!-- Left: Slide from Left -->
         <div class="partnership-content reveal-left">
           <span>Kemitraan Distribusi &amp; Pasokan Grosir</span>
           <h2>Tumbuh Bersama Jaringan Pasokan <em>CV. Putra AR</em></h2>
@@ -693,7 +723,7 @@
           </ul>
         </div>
 
-        <!-- Right: Reveal from right -->
+        <!-- Right: Slide from Right -->
         <div class="partnership-cta-card reveal-right">
           <h3>Konsultasi Kemitraan</h3>
           <p>Hubungi bagian pemasaran kami untuk mendiskusikan volume pasokan, katalog harga distributor, dan jadwal pengiriman ke kota Anda.</p>
@@ -721,7 +751,7 @@
       </div>
 
       <div class="contact-layout">
-        <!-- Left: Reveal from left -->
+        <!-- Left: Slide from Left -->
         <div class="contact-cards-col reveal-left">
           <div class="contact-box">
             <div class="contact-box-icon">
@@ -764,7 +794,7 @@
           </div>
         </div>
 
-        <!-- Right: Reveal from right -->
+        <!-- Right: Slide from Right -->
         <div class="contact-form-panel reveal-right">
           <h3>Formulir Pertanyaan &amp; Saran</h3>
           <p>Kirimkan pesan Anda secara langsung kepada tim manajemen kami.</p>
@@ -809,7 +839,7 @@
     </section>
 
     <!-- ==========================================================================
-         Footer (Solid Deep Forest Slate - Matching Reference Bottom Section)
+         Footer (Solid Deep Executive Navy)
          ========================================================================== -->
     <footer>
       <div class="footer-top">
@@ -843,7 +873,7 @@
             <li><a href="#profile">Profil Perusahaan</a></li>
             <li><a href="#gallery">Galeri Produk</a></li>
             <li><a href="#standards">Standar Mutu</a></li>
-            <li><a href="#products">Katalog Lengkap</a></li>
+            <li><a href="#products">Katalog Menu</a></li>
             <li><a href="#partnership">Kemitraan Grosir</a></li>
             <li><a href="#contact">Kontak &amp; Lokasi</a></li>
           </ul>
@@ -862,13 +892,13 @@
 
         <div class="footer-col">
           <h4>Kantor &amp; Pabrik</h4>
-          <p style="font-size: 0.88rem; color: #a4b0ab; line-height: 1.6; margin-bottom: 12px;">
+          <p style="font-size: 0.88rem; color: #94a3b8; line-height: 1.6; margin-bottom: 12px;">
             Sukahurip, Kabupaten Ciamis, Jawa Barat 46262, Indonesia
           </p>
-          <p style="font-size: 0.88rem; color: var(--color-primary); font-weight: 700; margin-bottom: 8px;">
+          <p style="font-size: 0.88rem; color: #38bdf8; font-weight: 700; margin-bottom: 8px;">
             Telepon: (0265) 5401232
           </p>
-          <p style="font-size: 0.88rem; color: #a4b0ab;">
+          <p style="font-size: 0.88rem; color: #94a3b8;">
             WhatsApp: +62 813-1064-1534
           </p>
         </div>
