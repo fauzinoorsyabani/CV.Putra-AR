@@ -118,31 +118,69 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(advanceHeroSlide, slideIntervalTime);
     }
 
-    // 4. Dynamic Rotating Hero Headline
-    const rotatingTitleEl = document.querySelector('.hero-rotator-text');
-    if (rotatingTitleEl) {
+    // 4. Automated Typewriter Headline Rotation
+    const typewriterEl = document.getElementById('hero-typewriter-text');
+    if (typewriterEl) {
         const headlinePhrases = [
-            'Cita Rasa Otentik, Standar <em class="italic">Modern</em>',
-            'Olahan Higienis, Mutu <em class="italic">Terpercaya</em>',
-            'Pangan Berkualitas, Rasa <em class="italic">Juara</em>',
-            'Pasokan Grosir, Skala <em class="italic">Nusantara</em>',
-            'Teknologi Presisi, Resep <em class="italic">Legendaris</em>'
+            { prefix: 'Cita Rasa Otentik, Standar ', highlight: 'Modern' },
+            { prefix: 'Manufaktur Higienis Berteknologi ', highlight: 'Jepang' },
+            { prefix: 'Produksi Bakso Raja Raoz & ', highlight: 'Pangan Olahan' },
+            { prefix: 'Pasokan Berkualitas untuk ', highlight: 'Mitra Grosir' },
+            { prefix: 'Dedikasi Mutu Pangan Terbaik ', highlight: 'Nusantara' }
         ];
-        let headlineIdx = 0;
-        const rotateInterval = 3600;
 
-        setInterval(() => {
-            rotatingTitleEl.classList.add('slide-out');
-            setTimeout(() => {
-                headlineIdx = (headlineIdx + 1) % headlinePhrases.length;
-                rotatingTitleEl.innerHTML = headlinePhrases[headlineIdx];
-                rotatingTitleEl.classList.remove('slide-out');
-                rotatingTitleEl.classList.add('slide-in');
-                setTimeout(() => {
-                    rotatingTitleEl.classList.remove('slide-in');
-                }, 380);
-            }, 380);
-        }, rotateInterval);
+        let phraseIndex = 0;
+        let charIndex = headlinePhrases[0].prefix.length + headlinePhrases[0].highlight.length;
+        let isDeleting = false;
+        let typingTimeout = null;
+
+        const TYPE_SPEED = 42;
+        const DELETE_SPEED = 20;
+        const HOLD_TIME = 2600;
+        const PAUSE_BEFORE_TYPE = 400;
+
+        function renderHeadline(prefix, highlight, count) {
+            const prefixLen = prefix.length;
+            if (count <= prefixLen) {
+                typewriterEl.textContent = prefix.substring(0, count);
+            } else {
+                const hlPart = highlight.substring(0, count - prefixLen);
+                typewriterEl.innerHTML = prefix + '<em class="italic">' + hlPart + '</em>';
+            }
+        }
+
+        function typeLoop() {
+            const current = headlinePhrases[phraseIndex];
+            const fullLen = current.prefix.length + current.highlight.length;
+
+            if (isDeleting) {
+                charIndex--;
+                renderHeadline(current.prefix, current.highlight, charIndex);
+
+                if (charIndex <= 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % headlinePhrases.length;
+                    typingTimeout = setTimeout(typeLoop, PAUSE_BEFORE_TYPE);
+                    return;
+                }
+                typingTimeout = setTimeout(typeLoop, DELETE_SPEED);
+            } else {
+                charIndex++;
+                renderHeadline(current.prefix, current.highlight, charIndex);
+
+                if (charIndex >= fullLen) {
+                    isDeleting = true;
+                    typingTimeout = setTimeout(typeLoop, HOLD_TIME);
+                    return;
+                }
+                typingTimeout = setTimeout(typeLoop, TYPE_SPEED);
+            }
+        }
+
+        typingTimeout = setTimeout(() => {
+            isDeleting = true;
+            typeLoop();
+        }, HOLD_TIME);
     }
 
     // 5. Directional Scroll Animations (Left, Right, Up, Stagger)
