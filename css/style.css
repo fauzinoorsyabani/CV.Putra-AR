@@ -512,6 +512,10 @@ button, input, textarea {
   color: #ffffff;
   max-width: 960px;
   margin: 0 auto 24px;
+  min-height: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-main-title em {
@@ -519,6 +523,34 @@ button, input, textarea {
   font-style: italic;
   font-weight: 600;
   color: #38bdf8;
+}
+
+.hero-rotator-text {
+  display: inline-block;
+  transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.hero-rotator-text.slide-out {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.hero-rotator-text.slide-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: heroTextSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroTextSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-lead-text {

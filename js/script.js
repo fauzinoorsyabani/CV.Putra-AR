@@ -118,7 +118,34 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(advanceHeroSlide, slideIntervalTime);
     }
 
-    // 4. Directional Scroll Animations (Left, Right, Up, Stagger)
+    // 4. Dynamic Rotating Hero Headline
+    const rotatingTitleEl = document.querySelector('.hero-rotator-text');
+    if (rotatingTitleEl) {
+        const headlinePhrases = [
+            'Cita Rasa Otentik, Standar <em class="italic">Modern</em>',
+            'Olahan Higienis, Mutu <em class="italic">Terpercaya</em>',
+            'Pangan Berkualitas, Rasa <em class="italic">Juara</em>',
+            'Pasokan Grosir, Skala <em class="italic">Nusantara</em>',
+            'Teknologi Presisi, Resep <em class="italic">Legendaris</em>'
+        ];
+        let headlineIdx = 0;
+        const rotateInterval = 3600;
+
+        setInterval(() => {
+            rotatingTitleEl.classList.add('slide-out');
+            setTimeout(() => {
+                headlineIdx = (headlineIdx + 1) % headlinePhrases.length;
+                rotatingTitleEl.innerHTML = headlinePhrases[headlineIdx];
+                rotatingTitleEl.classList.remove('slide-out');
+                rotatingTitleEl.classList.add('slide-in');
+                setTimeout(() => {
+                    rotatingTitleEl.classList.remove('slide-in');
+                }, 380);
+            }, 380);
+        }, rotateInterval);
+    }
+
+    // 5. Directional Scroll Animations (Left, Right, Up, Stagger)
     const directionalElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up, .reveal-scale');
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -135,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     directionalElements.forEach(el => revealObserver.observe(el));
 
-    // 5. Animated Number Counters
+    // 6. Animated Number Counters
     const counterElements = document.querySelectorAll('.counter-number');
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -168,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counterElements.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Interactive 3D Card Hover / Subtle Perspective Tilt
+    // 7. Interactive 3D Card Hover / Subtle Perspective Tilt
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -188,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. Back To Top Button
+    // 8. Back To Top Button
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -199,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Contact Form Handler
+    // 9. Contact Form Handler
     const contactForm = document.querySelector('.contact-form-inner');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
